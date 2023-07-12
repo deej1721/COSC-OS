@@ -249,6 +249,21 @@ Which PowerShell variable stores the installation directory for PowerShell?
   ANSWER:
 Windows_PowerShell_Profiles5 5
 Which PowerShell variable stores the path to the "Current User, Current Host" profile?
+  ANSWER: $PROFILE
+Windows_PowerShell_Profiles6 5
+What command would you run to view the help for PowerShell Profiles?
+  ANSWER:
+Windows_PowerShell_Profiles7 5
+What command would tell you if there was a profile loaded for All Users All Hosts? Flag is the full command syntax
+  ANSWER: test-path -path $profile.currentUserCurrentHost
+Windows_PowerShell_Profiles8 10
+Challenge only allows ONE attempt Malware is running in a PowerShell profile on the File-Server. Based on PowerShell profile order of precedence (what is read first), find the correct flag. The flag is the string after the #, without the preceding space.
+  ANSWER:
+    test-path -path $profile.allusersallhosts
+    cat $profile.allusersallhosts
+  FINAL: I am definitely not the malware
 ------------------------------------------------------------------------------------------------------------------------
 GLASS HEART -CASKETS
 VOICES IN MY HEAD - FALLING IN REVERSE
+TEARS DONT FALL - BULLET FOR MY VALENTINE
+DECODE - PARAMORE
