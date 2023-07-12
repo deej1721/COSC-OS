@@ -97,4 +97,25 @@ NET API NOTES - DOWNLOADING A FILE WITH POWERSHELL
   (New-Object System.Net.WebClient).DownloadFile($url, $output)
 ------------------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES 
+Primer_CLI_1 1
+  Which program starts with every CMD and PowerShell instance in Windows 7 and later?
+  ANSWER: conhost.exe
+Primer_CLI_2 1
+  What Windows 10 feature supports installing Linux subsystem?
+  ANSWER: Windows Subsystem for Linux
+Primer_CLI_3 1
+  Which Windows feature can be used to interact with any CLI on the Windows system concurrently using multiple tabs?
+  ANSWER: Windows Terminal
+Primer_CLI_4 1
+  What was the default shell (command line) of Windows versions Windows 2000 through Windows 8.1?
+  ANSWER: Command Prompt
+Primer_CLI_5 1
+  What data type do all cmd.exe commands return?
+  ANSWER: String
+Primer_CLI_6 1
+  What framework is PowerShell built on?
+  ANSWER: .NET
+Primer_CLI_7 1
+"What will all of the below give you? (get-host).version $host.version
+  ANSWER: 
 ------------------------------------------------------------------------------------------------------------------------
