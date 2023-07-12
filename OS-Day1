@@ -14,10 +14,10 @@
   INT. ADMIN IP...: 10.4.0.2 (xfreerdp /u:andy.dwyer /v:10.50.43.196 -dynamic-resolution +glyph-cache +clipboard)
   FILE SERVER IP..: 10.4.0.3 (SSH FROM INT. ADMIN STATION)
   WORKSTATION2 IP : 10.4.0.4 (SSH FROM INT. ADMIN STATION)
-  WORKSTATION1 IP : 10.4.0.5 (SSH FROM INT. ADMIN STATION)
-  TERRA IP....    : 10.4.0.6 (SSH FROM INT. ADMIN STATION)
+  WORKSTATION1 IP : 10.4.0.5 (RDP FROM INT. ADMIN STATION)
+  TERRA IP....    : 10.4.0.6 (SSH FROM INT. ADMIN STATION)Select-String -Pattern 'HELLO'
   MINAS_TIRTH IP..: 10.4.0.7 (SSH FROM INT. ADMIN STATION)
-
+E
 //CREDENTIALS:
   .1-.4...    : andy.dwyer: BurtMacklinFBI
   WORKSTATION1: student: password
@@ -96,7 +96,7 @@ NET API NOTES - DOWNLOADING A FILE WITH POWERSHELL
   $wc.DownloadFile($url, $output) 
   (New-Object System.Net.WebClient).DownloadFile($url, $output)
 ------------------------------------------------------------------------------------------------------------------------
-CTFD CHALLENGES 
+CTFD CHALLENGES - 01_windows_powershell
 Primer_CLI_1 1
   Which program starts with every CMD and PowerShell instance in Windows 7 and later?
   ANSWER: conhost.exe
@@ -117,5 +117,138 @@ Primer_CLI_6 1
   ANSWER: .NET
 Primer_CLI_7 1
 "What will all of the below give you? (get-host).version $host.version
+  ANSWER: powershell version
+Primer_CLI_8  1
+After PowerShell Core is installed what CLI command launches it?
+  ANSWER:
+Windows_PowerShell_Basics1 5
+What syntax do PowerShell cmdlets follow?
+  ANSWER: verb-noun
+Windows_PowerShell_Basics2 5
+What PS command will list all PowerShell cmdlets?
+  ANSWER: get-command
+Windows_PowerShell_Basics3 5
+What PowerShell command will list all verbs?
+  ANSWER: get-verb
+Windows_PowerShell_Basics4 5
+PowerShell commands output what data type?
   ANSWER: 
+Windows_PowerShell_Basics5 5
+All PowerShell objects are comprised of what two things?
+  ANSWER: methods, properties
+Windows_PowerShell_Basics6 5
+What command will list all things that make up a PowerShell object?
+  ANSWER: get-member
+Windows_PowerShell_Alias1 5
+What PowerShell command will list PowerShell aliases?
+  ANSWER: get-alias
+Windows_PowerShell_Alias2 5
+What PowerShell command lists all of the contents of a directory?
+  ANSWER: get-childitem
+Windows_PowerShell_Help1 5
+What is the basic cmdlet that displays help about Windows Powershell cmdlets and concepts?
+   ANSWER: get-help
+Windows_PowerShell_Help2 5
+PowerShell "help files" don't show the entire help file with a basic command. What switch option shows the entire help file?
+  ANSWER: -full
+Windows_PowerShell_Help3 5
+What PowerShell command will update the PowerShell "help files" to the latest version?
+  ANSWER: update-help
+Windows_PowerShell_Help5 5
+What help switch will show you the "help files" on Microsoft's website, in your default browser?
+  ANSWER: -online
+Windows_PowerShell_Interaction1 5
+What command will start the Chrome browser on your machine?
+  ANSWER: 
+Windows_PowerShell_Interaction2 5
+What command using a PS Method will stop chrome?
+  ANSWER: 
+Windows_PowerShell_Interaction3 5
+What PowerShell command (without using a method) will stop the Chrome process?
+  ANSWER:
+Windows_PowerShell_CimClasses1 5
+PowerShell doesn't have a native cmdlet that will give you processor information (such as get-processor or get-cpu). Knowing this information might be necessary. What command would give you information about the system's processor?
+  ANSWER: get-WmiObject Win32_Processor
+Windows_PowerShell_Logic1 5
+What PowerShell command will read a text file?
+  ANSWER: get-content
+Windows_PowerShell_Logic2 5
+What PowerShell command will allow for counting lines in a file, averaging numbers, and summing numbers?
+  ANSWER: measure-object
+Windows_PowerShell_Regex_1 5
+What PowerShell command searches for text patterns in a string?
+  ANSWER: select-string
+Windows_PowerShell_Basics9 5
+Users' files are stored in their corresponding home directory. What is the literal path to all home directories on a Windows 10 system?
+  ANSWER: C:\Users\
+Windows_PowerShell_Basics7 10
+How many properties are available for the get-process cmdlet?
+  ANSWER: 52 VIA (get-process | get-member | where-object {$_.membertype -eq "Property"}).count
+Windows_PowerShell_Alias3 10
+How many aliases does PowerShell have for listing the contents of a directory?
+  ANSWER: 3 VIA (get-alias -definition get-childitem).count
+Windows_PowerShell_Help4 10
+When requesting the help file for the get-process cmdlet, what full command is the 9th example given?
+  ANSWER: Get-Process powershell VIA get-help get-process -examples
+Windows_PowerShell_CimClasses2 10
+To complete this challenge, find the description of the Lego Land service.
+  ANSWER: 
+    ssh andy.dwyer@10.4.0.3
+    powershell
+    Get-WmiObject win32_service | ?{$_.Name -like 'LegoLand'} | select Description
+  FINAL: "i_love_legos"
+Windows_PowerShell_Logic3 10
+In the CTF folder on the CTF User's Desktop, count the number of words in words2.txt.
+  ANSWER: 
+    cd C:\Users\CTF\Desktop\CTF
+    (cat .\words2.txt).count
+FINAL: 5254
+Windows_PowerShell_Logic4 10
+Count the number of files in the Videos folder in the CTF user's home directory.
+  ANSWER: 925 VIA (ls  C:\Users\CTF\Videos\).count
+Windows_PowerShell_Logic5 10
+Find the only line that makes the two files in the CTF user's Downloads folder different. Hint The flag is the string (not line number).
+  ANSWER: popeye VIA compare-object (get-content new.txt) (get-content old.txt)
+Windows_PowerShell_Logic6 10
+The password is the 21st line from the top, in ASCII alphabetically-sorted, descending order of the words.txt file.
+**Note: File Location - C:\Users\CTF\Desktop\CTF
+  ANSWER: ZzZp VIA Get-Content words.txt | sort -Descending | select -Index (21)
+Windows_PowerShell_Logic7 10
+Count the number of unique words in words.txt **Note: File Location - C:\Users\CTF\Desktop\CTF
+  ANSWER:
+Windows_PowerShell_Basics8 10
+How many methods are available for the get-process cmdlet? Machine: Admin_Station
+  ANSWER: 19 VIA (get-process | get-member | where-object {$_.membertype -eq "Method"}).count
+Windows_Powershell_Logic9 10
+Count the number of folders in the Music folder in the CTF user’s profile.
+  ANSWER: 411 VIA (Get-ChildItem | Measure-Object).count (FROM INSIDE THE MUSIC DIRECTORY)
+Windows_PowerShell_Regex_2 10
+Count the number of times, case-insensitive, gaab is listed in words.txt **Note: File Location - C:\Users\CTF\Desktop\CTF
+  ANSWER: 1 VIA (gci C:\Users\CTF\Desktop\CTF\words.txt | Select-String -Pattern 'gaab').count
+Windows_PowerShell_Regex_3 10
+Count the number of words, case-insensitive, with either a or z in a word, in the words.txt file Note: File Location - C:\Users\CTF\Desktop\CTF Hint: There are multiple "words" on each line.
+  ANSWER:
+Windows_PowerShell_Regex_4 10
+Count the number of lines that az appears in the words.txt file Note: File Location - C:\Users\CTF\Desktop\CTF
+
+
+    
 ------------------------------------------------------------------------------------------------------------------------
+CTFD CHALLENGES - 02_windows_powershell_profiles
+Windows_PowerShell_Profiles1 5
+Which PowerShell profile has the lowest precedence?
+  ANSWER: Current User, Current Host
+Windows_PowerShell_Profiles2 5
+Which PowerShell profile has the highest precedence?
+  ANSWER: All Users, All Hosts
+Windows_PowerShell_Profiles3 5
+Which PowerShell variable stores the current user’s home directory?
+  ANSWER: $HOME
+Windows_PowerShell_Profiles4 5
+Which PowerShell variable stores the installation directory for PowerShell?
+  ANSWER:
+Windows_PowerShell_Profiles5 5
+Which PowerShell variable stores the path to the "Current User, Current Host" profile?
+------------------------------------------------------------------------------------------------------------------------
+GLASS HEART -CASKETS
+VOICES IN MY HEAD - FALLING IN REVERSE
