@@ -240,6 +240,14 @@ Count the number of lines that az appears in the words.txt file Note: File Locat
  Windows_PowerShell_Logic8 15
 Use a PowerShell loop to unzip the Omega file 1,000 times and read what is inside. Note: Make sure you back up the .zip file to a different directory before attempting this challenge.
   ANSWER:
+  $x = 999
+  while($x -ge 0){
+    $y=$x-1
+    Expand-Archive -Path C:\Users\CTF\Documents\Omega$x.zip -DestinationPath  C:\Users\CTF\Documents\Omega$y -force
+    $y=$y-1
+    $x=$x-1
+    cd Omega$x
+  }
 Windows_PowerShell_Regex_5 15
 Count the number of words in words.txt that meet the following criteria: a appears at least twice consecutively and is followed immediately by any of the letters a through g Note: File Location - C:\Users\CTF\Desktop\CTF Example: aac...aaa...
   ANSWER: 357 VIA (get-content words.txt | select-string -pattern "aa+[A-Ga-g]").count
