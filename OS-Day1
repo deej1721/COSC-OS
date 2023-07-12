@@ -3,10 +3,15 @@
   ACCESS WINDOWS MACHINE, VIA TERMINAL: xfreerdp /u:student /v:10.50.28.16 -dynamic-resolution +glyph-cache +clipboard (SAME AS IN COSC-PWSH!)
 
 //STACK ISSUE AND CTFD INFO:
+  OS ACTIVITIES: http://10.50.24.129:8000/
+    USERNAME: DATA-M-505
+    PASSWORD: DATA-M-505
+    CLASS NAME: M23505
+    CLASS PASSWORD: password 
   MY ADMIN STATION: STACK NUMBER #4 @ 10.50.43.196
-  TO ACCESS ADMIN STATION: xfreerdp /u:andy.dywer /v:10.50.43.16 -dynamic-resolution +glyph-cache +clipboard
+  TO ACCESS ADMIN STATION: xfreerdp /u:andy.dwyer /v:10.50.43.196 -dynamic-resolution +glyph-cache +clipboard
   DOMAIN CONT IP..: 10.4.0.1 (SSH FROM INT. ADMIN STATION)
-  INT. ADMIN IP...: 10.4.0.2 (xfreerdp /u:andy.dywer /v:10.50.43.16 -dynamic-resolution +glyph-cache +clipboard)
+  INT. ADMIN IP...: 10.4.0.2 (xfreerdp /u:andy.dwyer /v:10.50.43.196 -dynamic-resolution +glyph-cache +clipboard)
   FILE SERVER IP..: 10.4.0.3 (SSH FROM INT. ADMIN STATION)
   WORKSTATION2 IP : 10.4.0.4 (SSH FROM INT. ADMIN STATION)
   WORKSTATION1 IP : 10.4.0.5 (SSH FROM INT. ADMIN STATION)
