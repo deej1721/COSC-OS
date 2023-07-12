@@ -60,10 +60,10 @@ PROFILES AND ORDER OF PRECEDENCE
 //RELAUNCH POWERSHELL TO RELOAD THE PROFILES AND ALLOW FOR USAGE OF LINE 59
 //EVEN IF A FILE ASSIGNED TO $profile IS EMPTY, test-path WILL STILL RETURN TRUE AS IT ONLY EVALUATES FILE EXISTENCE, NOT CONTENT
 
-TRUSTED HOSTS FILE AND PS REMOTING
+@@TRUSTED HOSTS FILE AND PS REMOTING@@
   get-item WSMAN:\localhost\client\trustedHosts RETURNS TRUSTED HOSTS FILE, CONTAINS WHICH HOSTS ARE VIEWED AS "SAFE" TO REMOTE TO
-  set-item WSMAN:\localhost\client\trustedHosts -value "file-server, domain-control, workstation2" ADDS THE THREE SPECIFIED VALUES TO THE VALUE COLUMN OF THE OUTPUT OF LINE 64
+  set-item WSMAN:\localhost\client\trustedHosts -value "file-server, domain-controll, workstation2" ADDS THE THREE SPECIFIED VALUES TO THE VALUE COLUMN OF THE OUTPUT OF LINE 64
   $session= new-psSession -value 10.28.0.4 -credential andy.dwyer ACCESSES A NEW REMOTE POWERSHELL SESSION ON 10.28.0.4 (workStation2) WITH AS USER andy.dwyer, -computerName COULD HAVE BEEN USED RATHER THAN -value
-  invoke-command -computerName file-server {get-service} 
+  invoke-command -computerName file-server,domain-controll {get-process} -asjob RUNS get-process ON file-server AND domain-controll AND DISPLAYS SOME INFORMATION ABOUT THE JOB'S RUNNING STATUS  
   
 ------------------------------------------------------------------------------------------------------------------------
