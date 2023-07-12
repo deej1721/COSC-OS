@@ -4,35 +4,58 @@ ACCESS WINDOWS MACHINE, VIA TERMINAL: xfreerdp /u:student /v:10.50.28.16 -dynami
 //POWERSHELL ISE = FOR SCRIPTING, REGULGAR POWERSHELL = NETWORK ADMINISTRATION
 ------------------------------------------------------------------------------------------------------------------------
 POWERSHELL REVIEW
-get-verb FOR ALL ACTIONS
-get-noun FOR ALL SUBJECTS
-get-command FOR ALL COMMANDS
-get-command -type cmdlet | sort-object -property noun | ft -groupby noun OUTPUTS GET COMMAND SORTED AND GROUPED BY SUBJECT, SO EVERYTHING YOU CAN DO TO A GIVEN NOUN 
-get-process FOR ALL PROCESSES
-get-process | more FOR ALL PROCESSES WITH MORE INFO
-get-process | get-member RETURNS ALL MEMBERS OF GET-PROCESS
-get-process | get-member | where-object {$_.membertype -match "Method"} RETURNS ONLY METHODS
-get-process | get-member | where-object {$_.membertype -match "Process"} RETURNS ALL MEMBERS WITH "PROCESS" IN THEIR TYPE
-get-process | get-member | where-object {$_.membertype -eq "Process"} RETURNS ALL MEMBERS OF THE "PROCESS" TYPE EXACTLY
-start-process STARTS A PROCESS (woah)
-stop-process -name ENDS A PROCESS BY NAME
-(get-process <PROCESS NAME>).kill() ENDS A PROCESS OF THE EXACT NAME SPECIFIED, USE WILDCARD ( * ) TO BE MORE GENERAL AND DISREGARD FILE EXTENSION
-get-process | select-object name,id,path RETURNS ONLY PROCESS NAMES, IDS, AND PATHS
-get-process | select-object name,id,path | where-object {$_.id -lt '1000'} RETURNS LINE 20 BUT ONLY FOR PROCESSES WITH PIDS BELOW 1000
-(get-process | select-object name,id,path | where-object {$_.id -lt '1000'}).count RETURNS HOW MANY PROCESSES MET THE CRITERIA TO BE PRINTED BY LINE 21
+  get-verb FOR ALL ACTIONS
+  get-noun FOR ALL SUBJECTS
+  get-command FOR ALL COMMANDS
+  get-command -type cmdlet | sort-object -property noun | ft -groupby noun OUTPUTS GET COMMAND SORTED AND GROUPED BY SUBJECT, SO EVERYTHING YOU CAN DO TO A GIVEN NOUN 
+  get-process FOR ALL PROCESSES
+  get-process | more FOR ALL PROCESSES WITH MORE INFO
+  get-process | get-member RETURNS ALL MEMBERS OF GET-PROCESS
+  get-process | get-member | where-object {$_.membertype -match "Method"} RETURNS ONLY METHODS
+  get-process | get-member | where-object {$_.membertype -match "Process"} RETURNS ALL MEMBERS WITH "PROCESS" IN THEIR TYPE
+  get-process | get-member | where-object {$_.membertype -eq "Process"} RETURNS ALL MEMBERS OF THE "PROCESS" TYPE EXACTLY
+  start-process STARTS A PROCESS (woah)
+  stop-process -name ENDS A PROCESS BY NAME
+  (get-process <PROCESS NAME>).kill() ENDS A PROCESS OF THE EXACT NAME SPECIFIED, USE WILDCARD ( * ) TO BE MORE GENERAL AND DISREGARD FILE EXTENSION
+  get-process | select-object name,id,path RETURNS ONLY PROCESS NAMES, IDS, AND PATHS
+  get-process | select-object name,id,path | where-object {$_.id -lt '1000'} RETURNS LINE 20 BUT ONLY FOR PROCESSES WITH PIDS BELOW 1000
+  (get-process | select-object name,id,path | where-object {$_.id -lt '1000'}).count RETURNS HOW MANY PROCESSES MET THE CRITERIA TO BE PRINTED BY LINE 21
 ------------------------------------------------------------------------------------------------------------------------
 CIM - CENTRAL INFORMATION MANAGEMENT
 WMI - WINDOWS MANAGEMENT INTERFACE
 BOTH FOR INFORMATION MANAGEMENT, A GOOD EXAMPLE IS THAT THEY LET A DEVICE KNOW HOW TO INTERACT WITH SOMETHING LIKE A FLASH DRIVE
 
 CIM COMMANDS
-get-cimInstance RETURNS ALL CIM INFO
-get-cimInstance -classname win32_logicalDisk RETURNS ALL DEVICE HARD DRIVE INFO
-get-cimInstance -classname win32_logicalDisk -filter "drivetype=3" RETURNS LINE 28, BUT ONLY DRIVES WITH A DRIVETYPE OF 3
-get-cimInstance -classname win32_logicalDisk -filter "drivetype=3" | get-member RETURNS ALL YOU CAN "DO" TO THE GIVEN COMMAND BEFORE THE PIPE
+  get-cimInstance RETURNS ALL CIM INFO
+  get-cimInstance -classname win32_logicalDisk RETURNS ALL DEVICE HARD DRIVE INFO
+  get-cimInstance -classname win32_logicalDisk -filter "drivetype=3" RETURNS LINE 28, BUT ONLY DRIVES WITH A DRIVETYPE OF 3
+  get-cimInstance -classname win32_logicalDisk -filter "drivetype=3" | get-member RETURNS ALL YOU CAN "DO" TO THE GIVEN COMMAND BEFORE THE PIPE
 
 WMI COMMANDS (!!!DEPRICATED!!!)
-get-wmiObject -class win32_logicalDisk RETURNS get-cimInstance -classname win32_logicalDisk BUT IN A SLIGHTLY DIFFERENT FORMAT
-get_wmiObject -class win32_logicalDisk -filter "driveType=3" RETURNS LINE 31 BUT IN A SLIGHTLY DIFFERENT FORMAT
+  get-wmiObject -class win32_logicalDisk RETURNS get-cimInstance -classname win32_logicalDisk BUT IN A SLIGHTLY DIFFERENT FORMAT
+  get_wmiObject -class win32_logicalDisk -filter "driveType=3" RETURNS LINE 31 BUT IN A SLIGHTLY DIFFERENT FORMAT
 
+SCOPES AND EXECUTION POLICIES
+  //UNDEFINED = RESTRICTED FOR ALL INTENTS AND PURPOSES
+  get-executionPolicy -list DISPLAYS EXECUTION POLICY PER SCOPE ON SYSTEM
+  set-executionPolicy -executionPolicy unrestricted -scope currentUser SETS THE EXECUTION POLICY TO UNRESTRICTED FOR THE CurrentUser SCOPE
+  $profile VARIABLE RETURNS CURRENT PROFILE 
+
+PROFILES AND ORDER OF PRECEDENCE
+  All Users, All Hosts
+  All Users, Current Host
+  Current User, All Hosts
+  Current User, Current Host
+//POWERSHELL READS THESE FOUR IN ORDER FROM LINE 45-48, ALWAYS THAT ORDER, AND THIS HAPPENS EVERY TIME POWERSHELL IS OPENED
+  test-path -path $profile.allUsersAllHosts RETURNS FALSE AS THERE IS NO ALL USER, ALL HOSTS PROFILE SET
+  test-path -path $profile.allUsersCurrentHost
+  test-path -path $profile.currentUserAllHosts
+  test-path -path $profile.currentUserCurrentHost
+//USE LINES 50-53 TO QUERY THE $profile VARIABLE AND SEE IF ANYTHING'S SET ALREADY
+  new-item -itemtype file -path $profile -force CREATES A FILE FOR CURRENT USER, CURRENT HOST
+  test-path -path $profile.currentUserCurrentHost WILL NOW RETURN TRUE
+  ise $profile ALLOWS YOU TO EDIT THAT NEW FILE ASSIGNED TO $profile, USAGE EXAMPLE IS AS FOLLOWS:
+    new-alias -name ip -value get-netTCPConnection CREATES NEW ALIAS; ENTER ip TO USE THE get-netTCPConnection CMDLET
+//RELAUNCH POWERSHELL TO RELOAD THE PROFILES AND ALLOW FOR USAGE OF LINE 59
+//EVEN IF A FILE ASSIGNED TO $profile IS EMPTY, test-path WILL STILL RETURN TRUE AS IT ONLY EVALUATES FILE EXISTENCE, NOT CONTENT
 ------------------------------------------------------------------------------------------------------------------------
