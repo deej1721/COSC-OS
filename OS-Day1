@@ -165,7 +165,7 @@ What command will start the Chrome browser on your machine?
   ANSWER: start-process chrome
 Windows_PowerShell_Interaction2 5
 What command using a PS Method will stop chrome?
-  ANSWER: 
+  ANSWER: (get-process chrome).kill()
 Windows_PowerShell_Interaction3 5
 What PowerShell command (without using a method) will stop the Chrome process?
   ANSWER: get-process chrome | stop-process
