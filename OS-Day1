@@ -1,7 +1,7 @@
 //COSC OS DAY 1 GENERAL LINKS:
   OS GUIDE: https://os.cybbh.io/public/os/latest/index.html
   ACCESS WINDOWS MACHINE, VIA TERMINAL: xfreerdp /u:student /v:10.50.28.16 -dynamic-resolution +glyph-cache +clipboard (SAME AS IN COSC-PWSH!)
-
+  HELPFUL REGEX GENERATOR: https://regex-generator.olafneumann.org/?sampleText=abcdefg&flags=i&selection=0%7CMultiple%20characters
 //STACK ISSUE AND CTFD INFO:
   OS CTFD ACTIVITIES: http://10.50.24.129:8000/
     USERNAME: DATA-M-505
@@ -120,7 +120,10 @@ Primer_CLI_7 1
   ANSWER: powershell version
 Primer_CLI_8  1
 After PowerShell Core is installed what CLI command launches it?
-  ANSWER:
+  ANSWER: pwsh
+Primer_CLI_9 1
+"After PowerShell Core is installed you can still run the built in version of PowerShell side-by-side. What CLI command will launch the built in version?"
+  ANSWER: powershell
 Windows_PowerShell_Basics1 5
 What syntax do PowerShell cmdlets follow?
   ANSWER: verb-noun
@@ -159,13 +162,13 @@ What help switch will show you the "help files" on Microsoft's website, in your 
   ANSWER: -online
 Windows_PowerShell_Interaction1 5
 What command will start the Chrome browser on your machine?
-  ANSWER: 
+  ANSWER: start-process chrome
 Windows_PowerShell_Interaction2 5
 What command using a PS Method will stop chrome?
   ANSWER: 
 Windows_PowerShell_Interaction3 5
 What PowerShell command (without using a method) will stop the Chrome process?
-  ANSWER:
+  ANSWER: get-process chrome | stop-process
 Windows_PowerShell_CimClasses1 5
 PowerShell doesn't have a native cmdlet that will give you processor information (such as get-processor or get-cpu). Knowing this information might be necessary. What command would give you information about the system's processor?
   ANSWER: get-WmiObject Win32_Processor
@@ -215,7 +218,7 @@ The password is the 21st line from the top, in ASCII alphabetically-sorted, desc
   ANSWER: ZzZp VIA Get-Content words.txt | sort -Descending | select -Index (21)
 Windows_PowerShell_Logic7 10
 Count the number of unique words in words.txt **Note: File Location - C:\Users\CTF\Desktop\CTF
-  ANSWER:
+  ANSWER: 456976 VIA get-content words.txt | sort-object | get-unique | Measure-Object
 Windows_PowerShell_Basics8 10
 How many methods are available for the get-process cmdlet? Machine: Admin_Station
   ANSWER: 19 VIA (get-process | get-member | where-object {$_.membertype -eq "Method"}).count
@@ -230,9 +233,16 @@ Count the number of words, case-insensitive, with either a or z in a word, in th
   ANSWER:
 Windows_PowerShell_Regex_4 10
 Count the number of lines that az appears in the words.txt file Note: File Location - C:\Users\CTF\Desktop\CTF
-
-
-    
+  ANSWER: 160352 VIA (get-content words.txt | select-string -pattern "a", "z").count
+Windows_PowerShell_Regex_4 10
+Count the number of lines that az appears in the words.txt file Note: File Location - C:\Users\CTF\Desktop\CTF
+  ANSWER: 2754 VIA (get-content words.txt | select-string -pattern "az").count
+ Windows_PowerShell_Logic8 15
+Use a PowerShell loop to unzip the Omega file 1,000 times and read what is inside. Note: Make sure you back up the .zip file to a different directory before attempting this challenge.
+  ANSWER:
+Windows_PowerShell_Regex_5 15
+Count the number of words in words.txt that meet the following criteria: a appears at least twice consecutively and is followed immediately by any of the letters a through g Note: File Location - C:\Users\CTF\Desktop\CTF Example: aac...aaa...
+  ANSWER: 357 VIA (get-content words.txt | select-string -pattern "aa+[A-Ga-g]").count
 ------------------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES - 02_windows_powershell_profiles
 Windows_PowerShell_Profiles1 5
@@ -246,13 +256,13 @@ Which PowerShell variable stores the current user’s home directory?
   ANSWER: $HOME
 Windows_PowerShell_Profiles4 5
 Which PowerShell variable stores the installation directory for PowerShell?
-  ANSWER:
+  ANSWER: $PsHome  
 Windows_PowerShell_Profiles5 5
 Which PowerShell variable stores the path to the "Current User, Current Host" profile?
   ANSWER: $PROFILE
 Windows_PowerShell_Profiles6 5
 What command would you run to view the help for PowerShell Profiles?
-  ANSWER:
+  ANSWER: get-help about_profiles
 Windows_PowerShell_Profiles7 5
 What command would tell you if there was a profile loaded for All Users All Hosts? Flag is the full command syntax
   ANSWER: test-path -path $profile.currentUserCurrentHost
