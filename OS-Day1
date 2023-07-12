@@ -1,6 +1,7 @@
 //COSC OS DAY 1 GENERAL LINKS:
   OS GUIDE: https://os.cybbh.io/public/os/latest/index.html
   ACCESS WINDOWS MACHINE, VIA TERMINAL: xfreerdp /u:student /v:10.50.28.16 -dynamic-resolution +glyph-cache +clipboard (SAME AS IN COSC-PWSH!)
+
 //STACK ISSUE AND CTFD INFO:
   MY ADMIN STATION: STACK NUMBER #4 @ 10.50.43.196
   TO ACCESS ADMIN STATION: xfreerdp /u:andy.dywer /v:10.50.43.16 -dynamic-resolution +glyph-cache +clipboard
@@ -11,7 +12,8 @@
   WORKSTATION1 IP : 10.4.0.5 (SSH FROM INT. ADMIN STATION)
   TERRA IP....    : 10.4.0.6 (SSH FROM INT. ADMIN STATION)
   MINAS_TIRTH IP..: 10.4.0.7 (SSH FROM INT. ADMIN STATION)
-CREDENTIALS:
+
+//CREDENTIALS:
   .1-.4...    : andy.dwyer: BurtMacklinFBI
   WORKSTATION1: student: password
   TERRA...    : garviel: luna
