@@ -89,6 +89,7 @@ ALTERNATE DATA STREAM (ADS) NOTES
 
 ------------------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES - 05_windows_registry
+
 Primer_Registry_1 1
 What Windows registry path is the Volatile Hive? Research: https://vistech.net/~champ/online-docs/books/mwin2reg/ch11-30975.html
   ANSWER: HKLM\HARDWARE
@@ -130,7 +131,7 @@ What registry hive contains only the currently logged-in user's settings?
   ANSWER: HKCU
 Windows_Registry_Basics_4 5
 The HKEY_CURRENT_USER registry hive is a symbolic link to another registry subkey. What is the subkey that it is linked to? Flag format: HIVE\SID.........................
-  ANSWER: 
+  ANSWER: HKEY_USERS\S-1-5-21-2881336348-3190591231-4063445930-1004
 Windows_Registry_Basics_5 5
 What PowerShell command will list all the subkeys and contents in the current directory and/or will list all the subkeys and the contents of a directory you specify?
   ANSWER: get-childItem
@@ -148,14 +149,96 @@ What registry subkey runs a single time, then deletes its value once the machine
   ANSWER: HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\RUNONCE
 Windows_Registry_Basics_10 10
 What registry subkey runs a single time, then deletes its value when a user logs on? The flag is the full path, using PowerShell. Flag format: FULL\PATH\ALL\CAPS
-  ANSWER: HKEY_CURRENT_USER\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\RUNONCE VIA https://learn.microsoft.com/en-us/windows/win32/setupapi/run-and-runonce-registry-keys
+  ANSWER: HKEY_CURRENT_USER\SOFTWARE\MICRreg OSOFT\WINDOWS\CURRENTVERSION\RUNONCE VIA https://learn.microsoft.com/en-us/windows/win32/setupapi/run-and-runonce-registry-keys
 Windows_Registry_Basics_11 15
 What is the value inside of the registry subkey from your previous challenge named registry_basics_7?
   ANSWER: C:\malware.exe VIA reg query HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run
 Windows_Registry_Basics_12 15
 What is the value inside of the registry subkey that loads every time the "Student" user logs on?
+  ANSWER: botnet.exe VIA ssh root@<WORKSTATION2>, reg query HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
+Windows_Registry_Basics_13 15
+What is the value inside of the registry subkey from registry_basics_9?
+  ANSWER: c:\virus.exe VIA reg query HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\RUN
+Windows_Registry_Basics_14 15
+What is the value inside of the registry subkey that loads a single time when the "student" user logs on?
+  ANSWER: worm.exe VIA reg query HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce
+Windows_Registry_Basics_15 15
+Figure out the manufacturer's name of the only USB drive that was plugged into this machine.
+  ANSWER: SanDisk VIA reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USBSTOR
+Windows_Registry_Basics_16 15
+What suspicious user profile, found in the registry, has connected to this machine?
+  ANSWER: Hacker_McHackerson VIA Get-ChildItem 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\ProfileList'
+Windows_Registry_Basics_17 15
+What suspicious wireless network, found in the registry, has this system connected to?
+  ANSWER:
 
+------------------------------------------------------------------------------------------------------------------------
+06_windows_alternate_data_stream
 
-
-
-
+Primer_NTFS_1 1
+The ____ determines how the data is stored on disk. (Fill in the blank)
+  ANSWER: file system
+Primer_NTFS_2 1
+What are NTFS partition sectors grouped into?
+  ANSWER: clusters
+Primer_NTFS_3 1
+What contains the metadata about all of the files and directories on a NTFS partition?
+  ANSWER: MFT
+Primer_NTFS_5 1
+Which NTFS attribute would store an alternate data stream? https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/c54dec26-1551-4d3a-a0ea-4fa40f848eb3
+  ANSWER: $DATA
+Primer_NTFS_6 1
+Which NTFS attribute holds information about a file's encrypted attributes? https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/a82e9105-2405-4e37-b2c3-28c773902d85
+  ANSWER: $LOGGED_UTILITY_STREAM
+Primer_NTFS_7 1
+Which NTFS attribute that is composed of the file security and access control properties? https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/a82e9105-2405-4e37-b2c3-28c773902d85
+  ANSWER: $SECURITY_DESCRIPTOR
+Primer_NTFS_8 1
+In NTFS, what is the type id, in hex, of the attribute that actually stores a NTFS files contents? Research: https://flatcap.github.io/linux-ntfs/ntfs/attributes/data.html
+  ANSWER: 0x80
+Primer_NTFS_9 1
+In NTFS what is the maximum number of bytes a MFT entry (containing the entirety of a file) can contain to be considered "Resident Data"? Research: https://www.sciencedirect.com/topics/computer-science/master-file-table https://en.wikipedia.org/wiki/NTFS
+  ANSWER:
+Primer_NTFS_10 1
+NTFS permissions can be a assigned to a filesystem object in two ways. Which way is intentionally assigned on the file or folder?
+Windows_File_System_Basics_1 5
+Every file on a Windows system has attributes. What does the d attribute mean?
+  ANSWER: directory
+Windows_File_System_Basics_2 5
+Every file on a Windows system has attributes. What does the h attribute mean?
+  ANSWER: hidden
+Windows_File_System_Basics_3 5
+What PowerShell command will list all files in the current directory, regardless of their attributes?
+  ANSWER: get-childitem -force
+Windows_File_System_Basics_4 5
+What PowerShell command will give you the sha512 hash of a file? Flag format: command -argument
+  ANSWER: get-filehash -Algorithm sha512
+Windows_File_System_Basics_5 5
+What PowerShell command will list permissions of a file?
+  ANSWER: get-acl
+Windows_File_System_Basics_6 5
+What Windows file maps hostnames to IP addresses?
+  ANSWER: C:\Windows\System32\drivers\etc\hosts
+Windows_File_System_Basics_7 10
+Which group has ReadandExecute (RX) permissions to the file listed in the previous challenge, File_System_Basics_6?
+  ANSWER: 
+Windows_File_System_Basics_8 10
+Find the last five characters of the MD5 hash of the hosts file.
+  ANSWER: 7566D VIA get-filehash -algorithm md5 C:\Windows\System32\drivers\etc\hosts
+Windows_File_System_Basics_9 10
+Examine the readme file somewhere in the CTF user’s home directory.
+  ANSWER: 123456 via cat C:\Users\CTF\Favorites\README
+Windows_File_System_Basics_10 10
+There is a hidden directory in the CTF user's home directory. The directory contains a file. Read the file.
+  ANSWER: ketchup VIA ls-force C:\Users\CTF\, cd secretsauce, cat saucey
+Windows_File_System_Basics_11 10
+Find a file in a directory on the desktop with spaces in it. FLAG is the contents of the file HINT: If you like to type the full names and paths of files, you better look for a shortcut.
+  ANSWER: 987654321 VIA cd z (TAB COMPLETE), CAT spaces.txt
+Windows_File_System_Basics_12 10
+Find the Alternate Data Stream in the CTF user's home, and read it.
+  ANSWER: P455W0RD VIA cd Documents, get-item .\nothing_here -stream *, cat C:\Users\CTF\Documents\nothing_here:hidden
+------------------------------------------------------------------------------------------------------------------------
+HOLD ON - TILLIAN
+GRAVITY - WAGE WAR
+WORSY CASE SCENARIO - CHUNK!
+I'M ALREADY GONE -  DAY TO REMEMBER
