@@ -19,7 +19,7 @@
   MINAS_TIRTH IP..: 10.4.0.7 (SSH FROM INT. ADMIN STATION)
 E
 //CREDENTIALS:
-  .1-.4...    : andy.dwyer: BurtMacklinFBI
+  .1-.4...    : andy.dwyer: BurtMacklinFBI ssh EXAMPLE: andy.dwyer@10.4.0.3
   WORKSTATION1: student: password
   TERRA...    : garviel: luna
   MINAS_TIRTH : bombadil: jolly
