@@ -50,6 +50,7 @@ HOW THE HIVES RELATE AND CONNECT:
   HHLM -> HKCC 
 
 REGISTRY GENERAL INFO:
+  ANSWER: HKLM
   MILLIONS OF ENTRIES 
   EACH ENTRY CONSISTS OF KEY-VALUE PAIR WITH VALUES AND POTENTIAL FOR SUBKEYS
 
@@ -111,6 +112,7 @@ Auto_START drivers and services are loaded after kernel initialization. What sta
 Primer_Registry_7 1
 What start value do DEMAND_START drivers and services have in the registry?
   ANSWER: 0x3
+  ANSWER: HKLM
 Primer_Registry_8 1
 When accessing a remote registry which are the only 2 accessible HKEYs? SYNTAX Hive, Hive
   ANSWER: HKLM, HKU
@@ -170,7 +172,7 @@ What suspicious user profile, found in the registry, has connected to this machi
   ANSWER: Hacker_McHackerson VIA Get-ChildItem 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\ProfileList'
 Windows_Registry_Basics_17 15
 What suspicious wireless network, found in the registry, has this system connected to?
-  ANSWER:
+  ANSWER: Terror_cafe_network VIA gci 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Profiles'
 
 ------------------------------------------------------------------------------------------------------------------------
 06_windows_alternate_data_stream
@@ -184,6 +186,9 @@ What are NTFS partition sectors grouped into?
 Primer_NTFS_3 1
 What contains the metadata about all of the files and directories on a NTFS partition?
   ANSWER: MFT
+Primer_NTFS_4 1
+NTFS files are collections of what?
+  ANSWER: attributes
 Primer_NTFS_5 1
 Which NTFS attribute would store an alternate data stream? https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/c54dec26-1551-4d3a-a0ea-4fa40f848eb3
   ANSWER: $DATA
@@ -198,9 +203,31 @@ In NTFS, what is the type id, in hex, of the attribute that actually stores a NT
   ANSWER: 0x80
 Primer_NTFS_9 1
 In NTFS what is the maximum number of bytes a MFT entry (containing the entirety of a file) can contain to be considered "Resident Data"? Research: https://www.sciencedirect.com/topics/computer-science/master-file-table https://en.wikipedia.org/wiki/NTFS
-  ANSWER:
+  ANSWER: 1024
 Primer_NTFS_10 1
 NTFS permissions can be a assigned to a filesystem object in two ways. Which way is intentionally assigned on the file or folder?
+  ANSWER: Explicit
+Primer_NTFS_11 1
+NTFS permissions can be a assigned to a filesystem object in two ways. Which way is the results of an object being assigned permissions as the result of being the child of another object?
+  ANSWER: Inherited
+Primer_NTFS_12 1
+Which NTFS file level permission is missing from the following list? Write, Read & Execute, Modify, Full Control
+  ANSWER: read
+Primer_NTFS_13 1
+Which NTFS folder level permission is missing from the following list?: Read, Write, Read & Execute, Modify, Full control
+  ANSWER: list directory contents
+Primer_NTFS_14 1
+Which NTFS file level permission permits changing the contents of a file, deleting the file but does not allow the ability to change the permissions on the file?
+  ANSWER: Modify
+Primer_NTFS_15 1
+Which NTFS folder level permission allows changing permissions?
+  ANSWER: Full Control
+Primer_NTFS_16 1
+Which NTFS attribute stores the file times of an object?
+  ANSWER: $STANDARD_INFORMATION
+Primer_NTFS_17 1
+What CLI command will only show the letters of attached drives? **Hint command is 3 words
+  ANSWER: fsutil fsinfo drives
 Windows_File_System_Basics_1 5
 Every file on a Windows system has attributes. What does the d attribute mean?
   ANSWER: directory
@@ -221,7 +248,7 @@ What Windows file maps hostnames to IP addresses?
   ANSWER: C:\Windows\System32\drivers\etc\hosts
 Windows_File_System_Basics_7 10
 Which group has ReadandExecute (RX) permissions to the file listed in the previous challenge, File_System_Basics_6?
-  ANSWER: 
+  ANSWER: BUILTIN\Users VIA get-acl  C:\Windows\System32\drivers\etc\hosts | fl
 Windows_File_System_Basics_8 10
 Find the last five characters of the MD5 hash of the hosts file.
   ANSWER: 7566D VIA get-filehash -algorithm md5 C:\Windows\System32\drivers\etc\hosts
@@ -237,6 +264,10 @@ Find a file in a directory on the desktop with spaces in it. FLAG is the content
 Windows_File_System_Basics_12 10
 Find the Alternate Data Stream in the CTF user's home, and read it.
   ANSWER: P455W0RD VIA cd Documents, get-item .\nothing_here -stream *, cat C:\Users\CTF\Documents\nothing_here:hidden
+Windows_File_System_Basics_13 15
+"Fortune cookies" have been left around the system so that you won't find the hidden password...
+  ANSWER: 
+
 ------------------------------------------------------------------------------------------------------------------------
 HOLD ON - TILLIAN
 GRAVITY - WAGE WAR
