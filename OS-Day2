@@ -88,4 +88,74 @@ ALTERNATE DATA STREAM (ADS) NOTES
   !!!IF MORE THAN ONE STREAM EXISTS, THIS MEANS THERE ARE ALTERNATE DATA STREAMS FOR THE FILE!!!
 
 ------------------------------------------------------------------------------------------------------------------------
-CTFD CHALLENGES - 
+CTFD CHALLENGES - 05_windows_registry
+Primer_Registry_1 1
+What Windows registry path is the Volatile Hive? Research: https://vistech.net/~champ/online-docs/books/mwin2reg/ch11-30975.html
+  ANSWER: HKLM\HARDWARE
+Primer_Registry_2 1
+What registry key creates the Wow6432Node to represent 32-bit applications that run on a 64-bit version of Windows?
+  ANSWER: HKEY_LOCAL_MACHINE\SOFTWARE
+Primer_Registry_3 1
+In what registry path are the BOOT_START drivers located?
+  ANSWER: HKLM\SYSTEM\CurrentControlSet\Services
+Primer_Registry_4 1
+What start value do BOOT_START drivers have in the registry?
+  ANSWER: 0x0
+Primer_Registry_5 1
+During kernel initialization, what registry location is read containing all SYSTEM_START drivers and services with a start value of 0x1?
+  ANSWER: HKLM\SYSTEM\CurrentControlSet\Services
+Primer_Registry_6 1
+Auto_START drivers and services are loaded after kernel initialization. What start value do they have in the registry?
+  ANSWER: 0x02
+Primer_Registry_7 1
+What start value do DEMAND_START drivers and services have in the registry?
+  ANSWER: 0x3
+Primer_Registry_8 1
+When accessing a remote registry which are the only 2 accessible HKEYs? SYNTAX Hive, Hive
+  ANSWER: HKLM, HKU
+Primer_Registry_9 1
+What PowerShell cmdlet will list currently mapped drives?
+  ANSWER: get-psdrive
+Primer_Registry_10 1
+What is the native Windows GUI tool for managing the registry?
+  ANSWER: Regedit
+Windows_Registry_Basics_1 5
+What registry hive contains all machine settings?
+  ANSWER: HKLM
+Windows_Registry_Basics_2 5
+What registry hive contains all user settings?
+  ANSWER: HKU
+Windows_Registry_Basics_3 5
+What registry hive contains only the currently logged-in user's settings?
+  ANSWER: HKCU
+Windows_Registry_Basics_4 5
+The HKEY_CURRENT_USER registry hive is a symbolic link to another registry subkey. What is the subkey that it is linked to? Flag format: HIVE\SID.........................
+  ANSWER: 
+Windows_Registry_Basics_5 5
+What PowerShell command will list all the subkeys and contents in the current directory and/or will list all the subkeys and the contents of a directory you specify?
+  ANSWER: get-childItem
+Windows_Registry_Basics_6 5
+What PowerShell command will list only the contents of a registry key or subkey?
+  ANSWER: get-item
+Windows_Registry_Basics_7 10
+What registry subkey runs every time the machine reboots? The flag is the full path, using PowerShell. Flag format: FULL\PATH\ALL\CAPS
+  ANSWER: HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run
+Windows_Registry_Basics_8 10
+What registry subkey runs every time a user logs on? The flag is the full path, using PowerShell. Flag format: FULL\PATH\ALL\CAPS
+  ANSWER: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
+Windows_Registry_Basics_9 10
+What registry subkey runs a single time, then deletes its value once the machine reboots? The flag is the full path, using PowerShell.
+  ANSWER: HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\RUNONCE
+Windows_Registry_Basics_10 10
+What registry subkey runs a single time, then deletes its value when a user logs on? The flag is the full path, using PowerShell. Flag format: FULL\PATH\ALL\CAPS
+  ANSWER: HKEY_CURRENT_USER\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\RUNONCE VIA https://learn.microsoft.com/en-us/windows/win32/setupapi/run-and-runonce-registry-keys
+Windows_Registry_Basics_11 15
+What is the value inside of the registry subkey from your previous challenge named registry_basics_7?
+  ANSWER: C:\malware.exe VIA reg query HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run
+Windows_Registry_Basics_12 15
+What is the value inside of the registry subkey that loads every time the "Student" user logs on?
+
+
+
+
+
