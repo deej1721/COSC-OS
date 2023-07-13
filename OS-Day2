@@ -1,2 +1,77 @@
 ------------------------------------------------------------------------------------------------------------------------
+//COSC OS DAY 2 GENERAL LINKS
 //CHANGE NAME OF TERMINAL: $host.UI.RawUI.WindowTitle = "System Information"
+------------------------------------------------------------------------------------------------------------------------
+REGISTRY HIVE MOUNTING VIA PSDRIVE:
+  New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS
+  /CREATE TEMPORARY OR PERMANENT CONENCTIONS TO NAVIGATE REGISTRY
+
+FORENSICALLY RELEVANT KEYS:
+  INTERNET URL HISTORY
+  USB HISTORY
+  WIFI ACCESS POINT HISTORY
+
+PERSISTENCE RELEVANT REGISTRY LOCATIONS:
+  HKLM\Software\Microsoft\Windows\CurrentVersion\Run
+  HKU\<SID>\Software\Microsoft\Windows\CurrentVersion\Run
+  HKLM\SYSTEM\CurrentControlSet\services
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders
+  HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon
+
+INTERESTING REGISTRY LOCATIONS:
+  HKLM\BCD00000000
+  /REPLACEMENT OF OLD boot.ini FILE
+  HKLM\SAM\SAM
+  /USE psexec -s -i regedit FROM administrator cmd.exe TO VIEW SAM
+  HKU\<SID>\Software\Policies\Microsoft\Windows\System\Scripts
+  /GROUP POLICY LOGIN/LOGOFF SCRIPTS DETERMINED HERE
+
+BASELINING THE REGISTRY:
+  Determining if the registry has been compromised
+  Suspicious behavior
+  Potenially malicious application removed from file system, but traces of application keep appearing
+  Importance of baselining
+
+REGISTRY HIVES:
+  HKCR (HKEY_CLASSES_ROOT) - INFORMATION FROM HKLM + HKCU
+  HKCU (HKEY_CURRENT_USER) - SYMBOLIC LINK OF THE HKU REGISTRY ENTRIES FOR THE USER CURRENTLY LOGGED IN, REMOVED UPON LOGOFF 
+  HKLM (HKEY_LOCAL_MACHINE) - READ UPON BOOT!!! ALL HARDWARE CONFIGURATES, SAM, SECURITY, SYSTEM
+  HKU  (HKEY_USERS) - REGISTRY CREATES TWO ENTRIES PER USER UPON THEIR LOGIN, ALSO INCLUDES ALL SYSTEM ACCOUNTS, INCLUDES LOTS OF SPECIFICS ON THAT INDIVIDUAL USER
+  HKCC (HKEY_CURRENT_CONFIG) - SYMBOLIC LINK 
+
+HOW THE HIVES RELATE AND CONNECT:
+  HKU -> HKCU
+  HHLM -> HKCC 
+
+REGISTRY GENERAL INFO:
+  MILLIONS OF ENTRIES 
+  EACH ENTRY CONSISTS OF KEY-VALUE PAIR WITH VALUES AND POTENTIAL FOR SUBKEYS
+
+REGISTRY POWERSHELL COMMANDS
+  reg.exe/? DISPLAYS HELP FOR THE REGISTRY EDITOR
+  reg query hklm\software\microsoft\windows\currentversion\run DISPLAYS THE SPECIFIED ENTRY FROM HKLM, A PERSISTENCE-RELEVANT LOCATION
+  reg add hklm\software\microsoft\windows\currentversion\run /v test /t REG_SZ /d c:\Windows\system32\windowspowershell\v1.0\powershell.exe ADDS A KEY-VALUE PAIR TO THE ENTRY QUERRIED ON LINE 53
+  reg delete hklm\software\microsoft\windows\currentversion\run /v test PROMPTS FOR CONFIRMATION AND THEN DELETES THE VALUE CREATED IN LINE 54
+
+REGISTRY MANIPULATION: 
+  QUERY:
+    get-childitem GETS ITEMS IN ONE OR MORE SPECIFIED LOCATIONS, MORE OUTPUT
+    Get-ItemProperty GETS ITEMS IN ONE OR MORE SPECIFIED LOCATIONS
+    Get-Item GETS ONE ITEM IN ONE SPECIFIED LOCATION, DOES NOT RETURN CONTENTS  UNLESS WILDCARD * IS UTILIZED
+
+  MODIFY:
+    Set-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run -Name Test -Value Bacon.exe
+      EDITS VALUE OF AN EXISTING SUBKEY
+    Remove-ItemProperty -Path "HKLM:\Software\Microsoft\Office\14.0\Security\Trusted Documents\TrustRecords" -Name "%USERPROFILE%Downloads/test-document.doc"
+      REMOVES VALUE ASSOCIATED WITH A SUBKEY
+    Rename-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run -Name SecurityHealth -NewName Test
+      RENAMES A VALUE ASSOCIATED WITH A SUBKEY 
+
+  CREATE:
+    New-Item "HKLM:\software\microsoft\officecsp\14.0\security\trusted documents\trustedrecords" -force 
+      ADDS A KEY WITHOUT A VALUE
+    New-ItemProperty "HKLM:\Software\Microsoft\Office\14.0\Security\Trusted Documents\TrustRecords" -Name "%USERPROFILE%Downloads/test-document.doc" -PropertyType Binary -Value ([byte[]](0x30,0x31,0xFF))
+      ADDS A VALUE TO THE KEY JUST CREATED
+------------------------------------------------------------------------------------------------------------------------
+CTFD CHALLENGES - 
