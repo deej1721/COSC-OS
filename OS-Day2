@@ -78,5 +78,14 @@ REGISTRY MANIPULATION:
       ADDS A KEY WITHOUT A VALUE
     New-ItemProperty "HKLM:\Software\Microsoft\Office\14.0\Security\Trusted Documents\TrustRecords" -Name "%USERPROFILE%Downloads/test-document.doc" -PropertyType Binary -Value ([byte[]](0x30,0x31,0xFF))
       ADDS A VALUE TO THE KEY JUST CREATED
+
+ALTERNATE DATA STREAM (ADS) NOTES
+  ADDING AN ADS TO YOUR FILE DOES NOT CHANGE THE FILE HASH!!! THEREFORE HARDER TO DETECT
+  CANNOT BE DISABLED, BUT CAN BE DELETED BY COPYING THE FILE TO A FAT32 FILESYSTEM
+  set-content file.txt -value "new stuff" -stream secret.info ADDS A NEW STREAM TO THE FILE
+  get-item file.txt -stream * LISTS ALL STREAMS FOR THE FILE
+  get-content file.txt -stream secret.info DISPLAYS THE FILE'S CONTENTS THAT EXIST WITHIN THE SPECIFIED STREAM
+  !!!IF MORE THAN ONE STREAM EXISTS, THIS MEANS THERE ARE ALTERNATE DATA STREAMS FOR THE FILE!!!
+
 ------------------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES - 
