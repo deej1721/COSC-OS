@@ -1,6 +1,7 @@
 ------------------------------------------------------------------------------------------------------------------------
 //COSC OS DAY 2 GENERAL LINKS
 //CHANGE NAME OF TERMINAL: $host.UI.RawUI.WindowTitle = "System Information"
+//CTRL + ARROWKEY WILL BRING YOU TO THE START OR BEGINNING OF A LINE
 ------------------------------------------------------------------------------------------------------------------------
 REGISTRY HIVE MOUNTING VIA PSDRIVE:
   New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS
