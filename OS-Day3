@@ -16,3 +16,90 @@ tree LISTS OUT THE DIRECTORIES SPECIFIED GRAPHICALLY
 id DISPLAYS UID,GID,GROUPS OF A USER
 cat /etc/passwd | awk -F: '{print $1}' PRINTS ONLY THE USERNAMES FROM THE FILE
 ------------------------------------------------------------------------------------------------------------------------
+CTFD CHALLENGES - 04_linux_basics2
+Linux Basics 1 5
+What command lists the contents of directories in Linux/Unix systems?
+  ANSWER: ls
+Linux Basics 2 5
+For the ls command, what arguments, or switch options, will allow you to print human-readable file sizes in a long-list format? The flag is entire command, including arguments
+  ANSWER: ls -lh
+Linux Basics 3 5
+What character will pipe the standard output from (echo "I’m a plumber") to another command, as standard input?
+  ANSWER: |
+Linux Basics 4 5
+What argument/switch option, when used with man, will search the short descriptions and man-page-names for a keyword that you provide? The flag is the complete command, with argument/switch.
+  ANSWER: man-k
+Linux Basics LFS Hierarchy 5
+What is the absolute path to the root directory?
+  ANSWER: /
+Linux Basics LFS Hierarchy2 5
+What is the absolute path to the default location for configuration files?
+  ANSWER: /etc
+Linux Basics LFS Hierarchy3 5
+What is the directory that contains executable programs (binaries) which are needed in single user mode, to bring the system up or to repair it?
+  ANSWER: /bin
+Linux Basics LFS Hierarchy4 5
+What is the absolute path to the directory which contains non-essential binaries that are accessible by standard users as well as root?
+  ANSWER: /usr/bin
+Linux Basics LFS Hierarchy5 5
+An absolute path to a directory which contains binaries only accessible by the root user, or users in the root group.
+  ANSWER: /sbin
+Linux Basics 5 10
+Search the man pages for the keyword digest. Then, use one of the binaries listed to hash the string OneWayBestWay using the largest sha hash available. The resulting hash is the flag.
+  ANSWER: <BIG HASH> VIA man -k digest, echo OneWayBestWay | sha512sum 
+Linux Basics 6 10
+Use File: /home/garviel/Encrypted This file contains encrypted contents. Identify its file type, then decode its contents. Hint: Use OpenSSL
+  ANSWER: DeCrypt
+Linux Basics LFS Hierarchy7 10
+Search the user home directories to find the file with the second-most lines in it. Hint: Exclude the VDI file! The flag is the number of lines in the file.
+  ANSWER: VIA find -type f -exec wc -l {} | sort -rn FROM HOME DIR
+Linux Basics Users and Groups2 10
+Identify all members of the lodge group. List their names in alphabetical order with a comma in between each name. Flag Format: name,name,name
+  ANSWER: 20000
+Linux Basics Users and Groups3 10
+Find the user with a unique login shell.
+  ANSWER: nobody VIA cat /etc/passwd | grep -v nologin, LOOK THROUGH
+Linux Basics Users and Groups4 10
+Identify the algorithm, the amount of salted characters added, and the length of the hashed password in the file that stores passwords. Hint: Research 'padding'... Flag format: algorithm,#characters,#length
+  ANSWER:
+Linux Basics Permissions1 10
+Find the directory named Bibliotheca. Enter the absolute path to the directory.
+  ANSWER: /media/Bibliotheca
+Linux Basics Permissions2 10
+Identify the number of users with valid login shells, who can list the contents of the Bibliotheca directory.
+  ANSWER: 15 via grep -Ff /etc/shells /etc/passwd
+Linux Basics Permissions3 10
+The permissions that user sejanus has on /media/Bibliotheca, in octal format. Flag format: # HINT: Think about groups...
+  ANSWER: 5 via ls -ld /media/Bibliotheca/, READ GROUP PERMS
+Linux Basics Permissions7 10
+Identify the file within /media/Bibliotheca where the owning group has more rights than the owning user.
+  ANSWER: Codex_Imperium VIA find -perm -g+w
+Linux Basics Permissions4 10
+The user tyborc is unable to access the directory: /media/Bibliotheca/Bibliotheca_unus Why? Identify the permission missing in standard verb form.
+  ANSWER: execute
+Linux Basics Permissions6 10
+You only have a single submission attempt for this challenge. Locate the file in /media/Bibliotheca that Inquisitor Quixos has sole modification rights on. The flag is the absolute path for the file
+  ANSWER: /media/Bibliotheca/Bibliotheca_unus/Codex_Hereticus VIA find -type f -user quixos -ls
+Linux Basics Regular Expressions1 10
+Using the commands ls and grep, identify the number of directories in /etc/ that end in .d
+  ANSWER: 28 via  printf '%s\n' /etc/*.d | wc -l
+Linux Basics Users and Groups1 10
+Read the file that contains the user database for the machine. Identify a strange comment.
+  ANSWER: traitor VIA cat /etc/passwd | awk -F: '{print 5}'
+Linux Basics Users and Groups2 10
+Identify all members of the lodge group. List their names in alphabetical order with a comma in between each name. Flag Format: name,name,name
+  ANSWER: aximand,erebus,ezekyle,garviel,sejanus,tarik VIA cat /etc/group | grep lodge
+Linux Basics Permissions10 10 Find the warp and read its secrets for the flag.
+  ANSWER: Ph'nglui mglw'nafh Cthulhu VIA find /media/Bibliotheca/ -type f -name '.*' AND cat <le file>
+Linux Basics Permissions9 10
+Read the concealed file within /media/Bibliotheca
+  ANSWER: Expand your mind VIA find /media/Bibliotheca/ -type f -name '.*' AND cat <le file BUT DIFFERENT ONE!>
+Linux Basics Regular Expressions2 10
+File: home/garviel/numbers Use regular expressions to match patterns similar to an IP address. The answer is the count/number of lines that match in the file.
+  ANSWER: 78 VIA grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" numbers | wc -l
+Linux Basics Permissions5 10
+Locate the file within /media/Bibliotheca that is modifiable by the only user that is part of the Chapter group, but not part of the Lodge group. Hint: Not the hidden file...
+  ANSWER: Codex_Astartes VIA find -user mephiston -ls
+Linux Basics Users and Groups4 10
+Identify the algorithm, the amount of salted characters added, and the length of the hashed password in the file that stores passwords. Hint: Research 'padding'... Flag format: algorithm,#characters,#length
+  ANSWER: SHA512,8,86 VIA sudo cat/etc/shadow, $6 = SHA512, COUNT VALUES BETWEEN DOLLAR SIGNS
