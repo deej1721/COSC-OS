@@ -2,3 +2,17 @@
 //COSC OS DAY 3 GENERAL LINKS
 WHEN ACCESSING LINUX IP, USE: ssh -J andy.dwyer@<ADMIN IP> LINUSER@LINIP
 ------------------------------------------------------------------------------------------------------------------------
+BASH GENERAL NOTES
+uname-a DISPLAYS HOST INFO 
+who DISPLAYS WHO'S LOGGED ON
+ifconfig IS LINUX VERSION OF ipconfig
+arp SHOWS LOCAL MACHINES ON LAYER 2
+iproute SHOWS IP ROUTES
+netstat -a SHOWS ALL CONNECTIONS TO MACHINE
+sudo FOR ELEVATED PERMS
+sudo -l TO DETERMINE WHAT YOU CAN DO AFTER SUDO
+iptables SHOWS FIREWALL RULES
+tree LISTS OUT THE DIRECTORIES SPECIFIED GRAPHICALLY
+id DISPLAYS UID,GID,GROUPS OF A USER
+cat /etc/passwd | awk -F: '{print $1}' PRINTS ONLY THE USERNAMES FROM THE FILE
+------------------------------------------------------------------------------------------------------------------------
