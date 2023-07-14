@@ -267,7 +267,9 @@ Find the Alternate Data Stream in the CTF user's home, and read it.
 Windows_File_System_Basics_13 15
 "Fortune cookies" have been left around the system so that you won't find the hidden password...
   ANSWER: fortune_cookie VIA Get-ChildItem -recurse | where {$_ -match "The Fortune Cookie" }
-  ANSWER: phi5hy
+Windos_File_System_Basics_14 15
+Find the Phish!
+  ANSWER: phi5hy VIA ls -force WWW, cat 200
 ------------------------------------------------------------------------------------------------------------------------
 HOLD ON - TILLIAN
 GRAVITY - WAGE WAR
