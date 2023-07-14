@@ -1,6 +1,7 @@
 ------------------------------------------------------------------------------------------------------------------------
 //COSC OS DAY 3 GENERAL LINKS
 WHEN ACCESSING LINUX IP, USE: ssh -J andy.dwyer@<ADMIN IP> LINUSER@LINIP
+REGEX GENERATOR: https://ihateregex.io/
 ------------------------------------------------------------------------------------------------------------------------
 BASH GENERAL NOTES
 uname-a DISPLAYS HOST INFO 
