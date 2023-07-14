@@ -266,7 +266,7 @@ Find the Alternate Data Stream in the CTF user's home, and read it.
   ANSWER: P455W0RD VIA cd Documents, get-item .\nothing_here -stream *, cat C:\Users\CTF\Documents\nothing_here:hidden
 Windows_File_System_Basics_13 15
 "Fortune cookies" have been left around the system so that you won't find the hidden password...
-  ANSWER: 
+  ANSWER: fortune_cookie VIA Get-ChildItem -recurse | where {$_ -match "The Fortune Cookie" }
 
 ------------------------------------------------------------------------------------------------------------------------
 HOLD ON - TILLIAN
