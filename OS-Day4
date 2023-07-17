@@ -108,7 +108,7 @@ The Windows NT Operating System attempts to combine features and benefits of mic
   ANSWER: hybrid
 Primer_Kernel_2 1
 The Linux kernel is an example of what type of kernel architecture? Research: https://simple.wikipedia.org/wiki/Kernel_(computer_science)
-  ANSWER: monolithic
+  ANSWER: monolithicpersist
 Primer_Kernel_3 1
 Windows operating system name typically differs from its version number. Which Windows version includes Windows 7 and Windows Server 2008R2 and was the 1st version to ship with PowerShell? **hint - only give the version number Research: https://learn.microsoft.com/en-us/windows/win32/sysinfo/operating-system-version
   ANSWER: 6.1
@@ -158,7 +158,14 @@ What bootloader is responsible for restoring the system to its original state af
 Windows_Boot_Remediate_1 10
 The system is booting into safe mode. Identify the flag from the command-line output of the command used to diagnose boot issues.
 Follow these instructions to boot the virtual image -- Click Here ---> Windows Bootkit Instructions
-
-
-
+  ANSWER: 1RF5Zgf9P VIA bcdedit.exe
+Windows_Boot_Remediate_2 10
+The system is booting into safe mode. Correct that, and reboot into the desktop. The flag is on the desktop.
+Follow these Windows Bootkit Instructions to boot the virtual image
+Windows_Boot_Remediate_4 10
+Run PowerShell... if you can. Resolve PowerShell dependencies. HINT: Search the entire file system for the PowerShell .dll and copy it back to where it needs to go. It is hidden in China. The flag is a file in the directory with the .dll Follow these Windows Bootkit Instructions to boot the virtual image
+  ANSWER: rfvBgtYHn
+Windows_Boot_Remediate_5 10
+Once you fix and launch PowerShell, the console is changed to a custom layout. Figure out what file is causing this, read the file, and inspect the file that it is referencing. Follow these Windows Bootkit Instructions to boot the virtual image
+  ANSWER: 
 ------------------------------------------------------------------------------------------------------------------------
