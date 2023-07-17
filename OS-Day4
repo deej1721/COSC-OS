@@ -2,14 +2,17 @@
 COSC DAY 4 GENERAL LINKS (IF ANY)
 BOOT PROCESS INFO LOCATED AT: https://os.cybbh.io/public/os/latest/006_windows_boot_process/winboot_fg.html
 ------------------------------------------------------------------------------------------------------------------------
-!!!CONSULT GUIDE FOR WINDOWS BOOT PROCESS INFO!!!
-
+GENERAL NOTES:
+  !!!CONSULT GUIDE FOR WINDOWS BOOT PROCESS INFO!!!
+  get-service | where-object{$_.status -eq "running"} DISPLAYS ALL RUNNING SERVICES, ADD | (ft OR fl) -property * TO DISPLAY INFORMATION IN MORE FORMATS
 BCDEDIT NOTES
-!!!SAVE BCD CONFIGURATIONS BEFORE EDITING!!!
-USE THE FOLLOWING TO DO SO:
-  bdcedit /export C:\SAVEBCD
-DISPLAY CURRENT BCD CONFIGURATION:
-  bcedit.exe
+  !!!SAVE BCD CONFIGURATIONS BEFORE EDITING!!!
+  USE THE FOLLOWING TO DO SO:
+    bdcedit /export C:\SAVEBCD
+  DISPLAY CURRENT BCD CONFIGURATION:
+    bcedit.exe
+  EDIT BCD:
+     bcdedit.exe /set {current} description "I like chocolate milk!"
 ------------------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES - 07_windows_boot_process
 ------------------------------------------------------------------------------------------------------------------------
