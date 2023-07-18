@@ -1,0 +1,114 @@
+------------------------------------------------------------------------------------------------------------------------
+COSC DAY 5 GENERAL LINKS (IF ANY)
+LINUX BOOT PROCESS INFO LOCATED AT: https://os.cybbh.io/public/os/latest/007_linux_boot_process/linboot_fg.html
+------------------------------------------------------------------------------------------------------------------------
+GENERAL NOTES
+
+  AREAS OF INTEREST FOR PERSISTENCE:
+    /etc/inittab
+    /etc/init.d
+
+  RUNLEVELS:
+    0 - HALT [poweroff.target]
+    1 - SINGLE USER [rescue.target]
+    2 - MULTI USER (NO NETWORKING, NO GUI DESKTOP) [multi-user.target]
+    3 - MULTI USER (WITH NETWORKING, NO GUI DESKTOP) [multi-user.target]
+    4 - NOT DEFINED, USER DEFINABLE [multi-user.target]
+    5 - MULTI USER (WITH NETWORKING AND GUI DESKTOP) [graphical.target]
+    6 - REBOOT [reboot.target]
+  IF SYSV, USE init #, IF SYSTEMD, USE runlevel#.target -> [index of bracket location above]
+  SYSV DIRECTORY: /etc/init.d/rc, SYSTEMD, USE /etc/systemd/system
+  IF SERVICE FOUND WITHIN THE DIRECTORIES ABOVE, IT WILL RUN WHEN THAT INIT OR RUNLEVEL IS STARTED OR CALLED IN 
+  ls /etc/rdc#.d/ INCLUDES SERVICES AT SPECIFIC RUNLEVELS AND THE LIKE
+
+DEMO NOTES:
+  lsblk LISTS MEDIA DEVICES OR STORAGE DEVICES (AS AFOREMENTIONED)
+  ssh -J andy.dwyer@10.50.43.196 bombadil@10.4.0.7
+  sudo  -u student xxd -l 512 -g 1 /dev/vda DISPLAYS HEX DUMB OF FIRST 512 BYTES OF THE SPECIFIED DIRECTORY
+  dd if=/dev/vda of=MBRcopy bs=512 count=1 
+    xxd IS FOR HEX DUMP
+    dd IS IS FOR BIT-TO-BIT COPIES
+
+LINUX FAMILY TREE NOTES:
+  https://en.wikipedia.org/wiki/List_of_Linux_distributions
+  BE AWARE OF DISTINCTIONS BETWEEN LINUX FLAVORS
+  LINUX + FOCUSES ON LINUX ADMINISTRATION ACROSS FLAVORS
+  ANSWER:
+------------------------------------------------------------------------------------------------------------------------
+CTFD CHALLENGES - 08_linux_boot_process
+Linux Boot Hex 4 5 
+Solve the following equation: 0x31A - 0x21B Enter the flag in Hexadecimal form.
+  ANSWER: 0xFF
+Linux Boot Bits and Bytes 1 5
+How many bits are in a nibble, and a byte? Flag format: #,#
+  ANSWER: 4,8
+Linux Boot Bits and Bytes 2 5
+How many bits does a single Hexadecimal character represent?
+  ANSWER: 4
+Linux Boot Bits and Bytes 3 5
+Each hex digit contains a value of 8 bits when used to represent memory. How many bytes could the range 0x00000000 - 0x00000010 contain?
+  ANSWER:  17
+Linux Boot MBR 1 5
+How large is the Master Boot Record and what directory is it located in? Flag format: #InBytes,directory
+  ANSWER: 512,/dev
+Linux Boot SysV 1 5
+Identify which of your Linux machines is using SysV Initialization.
+  ANSWER: minas-tirith
+Linux Boot Hex 1 5
+What are the maximum and minimum value a single Hexadecimal digit can contain? Enter the values in Linux Hexadecimal Numerical Constant form. Flag format: min-max
+  ANSWER: 0x0-0xF
+Linux Boot Hex 2 5
+What are the maximum and minimum values, in decimal notation, that a single Hexadecimal digit can represent? Flag format: min-max
+  ANSWER: 0-15
+Linux Boot Hex 3 5
+Solve the following equation: 0x31A + 0x43 Enter the flag in Hexadecimal form.
+  ANSWER: 0x35D
+Linux Boot Bits and Bytes 4 10
+Execute : sudo cat /dev/vda | xxd -l 32 -c 0x10 -g 1 What are the values contained in hex positions 0x00000001 through 0x00000008? Flag format: Value,Value,Value Machine: For this challenge: Minas_Tirith (ssh from Admin_Station)
+  ANSWER: 63,90,8e,d0,31,e4,8e,d8
+Linux Boot MBR 2 10
+Locate the master boot record for one of the Linux machines and read it with xxd What programming language is the MBR written in? HINT: Look at the first three bytes
+  ANSWER: assembly
+Linux Boot MBR 4 10
+The file /home/bombadil/mbroken is a copy of an MBR from another machine. Hash the first partition of the file using md5sum. The flag is the hash.
+  ANSWER: 2a5948fad4ec68170b23faaa2a16cef8 VIA dd if=mbroken bs=1 skip=446 count=16 | md5sum
+Linux Boot MBR 5 10
+The file /home/bombadil/mbroken is a copy of an MBR from another machine. You will find the "word" GRUB in the output, hash using md5sum. The flag is the entire hash.
+  ANSWER: 5fa690cb0f0789cbc57decfd096a503e
+Linux Boot MBR 3 10
+The file /home/bombadil/mbroken is a copy of an MBR from another machine. Hash only the Bootstrap section of the MBR using md5sum. The flag is the entire hash.
+  ANSWER: d59a68c7b6d62ecaa1376dfb73a3b7be VIA dd if=mbroken bs=1 skip=0 count=446 | md5sum
+Linux Boot SysV 2 10
+Identify the default run level on the SysV Init Linux machine. Flag format: #
+  ANSWER: 2
+Linux Boot SysV 3 10
+What is the last script to run when the command init 6 is executed? Flag format: /absolute/path NOTE: Use the machine identified in SysV 1 for this question.
+  ANSWER: /etc/init.d/reboot
+Linux Boot SysV 4 10
+What run levels start the daemon that allows remote connections over port 22? Flag format: #,#,#,# NOTE: Use the machine identified in SysV 1 for this question.
+  ANSWER: 2,3,4,5
+Linux Boot Systemd 1 10
+Identify the file symbolically-linked to init on the SystemD init machine. Flag format: /absolute/path Reminder: Use your Terra machine for these SystemD challenges!
+  ANSWER: /lib/systemd/systemd VIA which init ls -l /sbin
+Linux Boot Systemd 2 10
+What is the default target on the SystemD machine and where is it actually located? Flag format: name.target,/absolute/path NOTE: Use the SystemD Machine for this question.
+  ANSWER: 
+Linux Boot Systemd 3 10
+What unit does the graphical.target want to start, based solely on its configuration file? HINT: Targets deal with which init system? Which machine should you be looking for this flag, on?
+  ANSWER: display-manager.service VIA cat /lib/systemd/system/default.target
+NOTE: Use the SystemD Machine for this question.
+Linux Boot Systemd 4 10
+What dependency to graphical.target will stop it from executing if it fails to start, based solely on its static configuration file?
+  ANSWER: multi-user.target cat /lib/systemd/system/default.target
+NOTE: Use the SystemD Machine for this question.
+Linux Boot Systemd 5 10
+How many wants dependencies does SystemD actually recognize for the default.target HINT: Use the systemctl command with some arguments to make life easier. Flag format: # NOTE: Use the SystemD Machine for this question.
+  ANSWER: 7 VIA cat /etc/systemd/system/default.target.wants/ureadahead.service
+Linux Boot Systemd 6 10
+What is the full path to the binary used for standard message logging? HINT: Standard message logging is standardized across UNIX systems. NOTE: As the challenge name suggests, use the SystemD machine for this question. Flag format: /absolute/path
+  ANSWER: /usr/sbin/rsyslogd VIA ls -l /etc/systemd/system
+Linux Boot Grub 10
+Identify the Linux Kernel being loaded by the Grub, by examining its configuration. Enter the command used by the Grub, and the full path to the Kernel, as the flag. Flag Format: command,kernel location HINT: Click me for help understanding Grub commands Machine: Minas_Tirith
+  ANSWER: linux, /boot/vmlinuz-4.9.0-16-amd64
+
+------------------------------------------------------------------------------------------------------------------------
