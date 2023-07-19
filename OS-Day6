@@ -3,7 +3,22 @@ COSC DAY 6 GENERAL LINKS (IF ANY)
 WINDOWS PROCESS VALIDITY INFO LOCATED AT: https://os.cybbh.io/public/os/latest/008_windows_process_validity/winproc_fg.html
 WINDOWS UAC INFO LOCATED AT: https://os.cybbh.io/public/os/latest/009_windows_uac/uac_fg.html
 ------------------------------------------------------------------------------------------------------------------------
-GENERAL NOTES
+GENERAL NOTES:
+
+PROCESS VALIDITY DEMO NOTES:
+  GENERAL TAKEAWAYS: 
+    BE AWARE OF WHERE A FILE IS RUNNING FROM! SUSPICIOUS LOCATIONS INCLUDE BUT ARE NOT LIMITED TO: EXES FROM ROOT OF FILE SYSTEM OR DOWNLOADS FOLDER, DLLS OUTSIDE OF SYSTEM32
+    CHECK DESCRIPTIONS, MALICIOUS INDICATORS INCLUDE POOR GRAMMAR OR NO DESCRIPTION WHATSOEVER
+    CHECK FOR USERS RUNNING SYSTEM AUTHORITY PROCESSES!!!
+  (STARTING FROM C:/)  
+  get-process | Sort -Property Id | more LISTS ALL PROCESSES AND SORTS BY PID
+  Get-Process chrome | foreach {$a} {$_.modules} | more LISTS MODULES/DLLS USED BY DEFINED PROCESS AND THEIR FILE LOCATIONS
+  Get-Process | Select Name, Id, Description | Sort -Property Id | more LISTS ALL PROCESSES WITH PROPERTIES SPECIFIED IN THE CMDLET 
+  Get-Process SMSS,CSRSS,LSASS | Sort -Property Id LISTS THE THREE SPECIFIED PROCESSES AND SORTS THOSE BY PID
+  Get-CimInstance Win32_Process VIEW PROCESS INSTANCES WITH PPID
+  Get-CimInstance Win32_Process | Get-Member VIEW PROCESS INSTANCES WITH MORE DETAILS
+  Get-CimInstance Win32_Process | select name,ProcessId,ParentProcessId | sort processid VIEW THE PROCESSES WITH PID AND PPID SORTED BY PID
+  tasklist /v | more CMD EQUIVALENT OF PRIOR COMMANDS FOR PROCESS VALIDITY, USE IF POWERSHELL IS UNAVAILABLE!
 ------------------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES - 09_windows_process_validity
 ------------------------------------------------------------------------------------------------------------------------
