@@ -22,6 +22,7 @@ PROCESS VALIDITY DEMO NOTES:
   tasklist /svc CMD - DISPLAY SERVICE INFORMATION FOR EACH PROCESS WITHOUT TRUNCATION
   tasklist /m | more CMD - DISPLAY MODULES/DLLS ASSOCIATED TO ALL PROCESSES
   tasklist /m /fi "IMAGENAME eq chrome.exe" CMD - DISPLAY MODULES/DLLS ASSOCIATED TO A SPECIFIC PROCESS
+  tasklist /fo:{table|list|csv}` CMD - PRIOR COMMANDS WITH CRISPER FORMATTING
 ------------------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES - 09_windows_process_validity
 ------------------------------------------------------------------------------------------------------------------------
