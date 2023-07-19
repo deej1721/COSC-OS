@@ -19,6 +19,9 @@ PROCESS VALIDITY DEMO NOTES:
   Get-CimInstance Win32_Process | Get-Member VIEW PROCESS INSTANCES WITH MORE DETAILS
   Get-CimInstance Win32_Process | select name,ProcessId,ParentProcessId | sort processid VIEW THE PROCESSES WITH PID AND PPID SORTED BY PID
   tasklist /v | more CMD EQUIVALENT OF PRIOR COMMANDS FOR PROCESS VALIDITY, USE IF POWERSHELL IS UNAVAILABLE!
+  tasklist /svc CMD - DISPLAY SERVICE INFORMATION FOR EACH PROCESS WITHOUT TRUNCATION
+  tasklist /m | more CMD - DISPLAY MODULES/DLLS ASSOCIATED TO ALL PROCESSES
+  tasklist /m /fi "IMAGENAME eq chrome.exe" CMD - DISPLAY MODULES/DLLS ASSOCIATED TO A SPECIFIC PROCESS
 ------------------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES - 09_windows_process_validity
 ------------------------------------------------------------------------------------------------------------------------
