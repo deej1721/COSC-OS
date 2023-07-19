@@ -43,8 +43,98 @@ PROCESS VALIDITY DEMO NOTES:
 
 ------------------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES - 09_windows_process_validity
+Windows_Processes_Basics_1 5
+What Sysinternals tool shows malware persistence locations in tabs within its GUI?
+  ANSWER: AutoRuns
+Windows_Processes_Basics_2 5
+What Sysinternals tool is used to investigate processes?
+  ANSWER: process explorer
+Windows_Processes_Basics_3 5
+What Sysinternals tool can be used to investigate network connection attempts?
+  ANSWER: TCPView
+Windows_Processes_Basics_4 5
+What Sysinternals tool can view permissions?
+  ANSWER: AccessChk
+Windows_Processes_Basics_5 5
+What Sysinternals tool allows us to view and modify handles?
+  ANSWER: Handle
+Windows_Processes_Basics_6 5
+What is the default Windows user directory for files downloaded from the internet? The flag is the folder name only.
+  ANSWER: downloads
+Windows_Processes_Basics_7 5
+What is the default Windows download directory that everyone has access to? The flag is the absolute path to the directory.
+  ANSWER:
+Windows_Processes_Basics_8 5
+What Sysinternals tool shows service load order?
+  ANSWER: loadOrder
+Windows_Processes_Basics_9 5
+What is the service name of Windows Defender Firewall?
+  ANSWER: mpssvc
+Windows_Processes_Basics_10 5
+What SysInternals tool reports .dlls loaded into processes?
+  ANSWER: ListDLLs
+Windows_Hidden_Processes_1 10
+There is malware on the system that is named similarly to a legitimate Windows executable. There is a .dll in the folder that the malware runs from. The flag is the name of the .dll.
+  ANSWER:
+Windows_Hidden_Processes_2 10
+You notice that there is an annoying pop up happening regularly. Investigate the process causing it. The flag is the name of the executable.
+  ANSWER:
+
+Windows_Hidden_Processes_6 10
+Find the McAfeeFireTray.exe. There is a file in that directory. The flag is inside. HINT: Use Sysinternals tools.
+  ANSWER: StrongBad
+
+Win_Process_Situational_Awareness_1 10
+What are the permissions for NT SERVICE\TrustedInstaller on spoolsv.exe? Copy the permissions from your shell. HINT: Use Sysinternals tools.
+Windows_Hidden_Processes_5 10
+There is malware named TotallyLegit. Find its binary location and there will be a file in that directory. Read the file.
+  ANSWER: GwlkK3sa
+Windows_Hidden_Processes_8
+10
+Determine what mechanism opened the port from hidden_processes_7. The flag is the name of the file. Hint: The file is not legit.
+  ANSWER: legit_script.ps1 VIA PROCESS EXPLORER
+Windows_Hidden_Processes_7 10
+A nonstandard port has been opened by possible malware on the system. Identify the port.
+ ANSWER: 6666 VIA TCPVIEW
+Windows_Hidden_Processes_3 10
+Determine what is sending out a SYN_SENT message. The flag is the name of the executable. HINT: Use a Sysinternals tool.
+  ANSWER: McAfeeFireTray.exe
+Windows_Hidden_Processes_9 10
+Identify the flag from the file in hidden_processes_8.
+    ANSWER: 
+Windows_Hidden_Processes_9 10
+Identify the flag from the file in hidden_processes_8.
+ ANSWER: N0t_L3g1T_Ammiright 
+Win_Process_Situational_Awareness_3 10
+In what Load Order Group is the Windows Firewall service? HINT: Use Sysinternals tools.
+  ANSWER: NetworkProvider VIA loadOrder
+
 ------------------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES - 10_windows_uac
+Windows_UAC_Basics_1 5
+What Sysinternals tool will allow you to view a file's manifest?
+  ANSWER: Sigcheck
+Windows_UAC_Basics_2 5
+What is the RequestedExecutionLevel for an application to run with the same permissions as the process that started it?
+  ANSWER: asInvoker
+Windows_UAC_Basics_3 5
+What RequestedExecutionLevel will prompt the user for Administrator credentials if they're not a member of the Administrator's group?
+  ANSWER: requireAdministrator
+Windows_UAC_Basics_5 5
+What registry key holds UAC values?
+  ANSWER: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
+Windows_UAC_Basics_4 10
+The flag is the RequestedExecutionLevel of the schtasks.exe file.
+  ANSWER: asInvoker
+Windows_UAC_Basics_6 10
+  ANSWER:
+Determine which UAC subkey property shows whether UAC is enabled or not. The flag is the data value in that property. Hint: Make sure you're on the correct box.
+Windows_UAC_Basics_7 10
+Provide the name of the UAC [Registry subkey] property that determines what level UAC is set to for admin privileges (Example UAC levels: Default, Always, Notify).
+  ANSWER:
+Windows_UAC_Basics_8 10
+Query the registry subkey where UAC settings are stored, and provide the flag.
+  ANSWER:
 ------------------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES - 11_windows_services
 Windows_Services_Basics_1 5
@@ -66,6 +156,6 @@ Services have a name and display name, which could be different. What is the ser
   ANSWER: Legit VIA get-service
 Windows_Services_Basics_7 10
 Figure out the SID of the only Totally-Legit service. Example: S-1-5-80-159957745-2084983471-2137709666-960844832-[1182961511] Submit only the [bracketed] portion of the SID. HINT: Run the command on the service name, not the display name.
-  ANSWER:
+  ANSWER: 1182961511 via sc.exe showsid Legit
 
 ------------------------------------------------------------------------------------------------------------------------
