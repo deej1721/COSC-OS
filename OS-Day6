@@ -47,4 +47,25 @@ CTFD CHALLENGES - 09_windows_process_validity
 CTFD CHALLENGES - 10_windows_uac
 ------------------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES - 11_windows_services
+Windows_Services_Basics_1 5
+What command-line (cmd) command will show service information?
+  ANSWER: sc querry
+Windows_Services_Basics_2 5
+What command-line (cmd) command will show all services, running or not running? The flag is the full command, for all services.
+Windows_Services_Basics_3 5
+What PowerShell command will list all services?
+  ANSWER: get-service
+Windows_Services_Basics_4 5
+What registry location holds all service data?
+  ANSWER: HKLM\SYSTEM\CurrentControlSet\Services
+Windows_Services_Basics_5 5
+What registry subkey holds a service's .dll location? The flag is the subkey name (full path not needed).
+  ANSWER:
+Windows_Services_Basics_6 10
+Services have a name and display name, which could be different. What is the service name of the only Totally-Legit service?
+  ANSWER: Legit VIA get-service
+Windows_Services_Basics_7 10
+Figure out the SID of the only Totally-Legit service. Example: S-1-5-80-159957745-2084983471-2137709666-960844832-[1182961511] Submit only the [bracketed] portion of the SID. HINT: Run the command on the service name, not the display name.
+  ANSWER:
+
 ------------------------------------------------------------------------------------------------------------------------
