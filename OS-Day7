@@ -1,0 +1,39 @@
+------------------------------------------------------------------------------------------------------------------------
+OS DAY 7 GENERAL LINKS (IF ANY)
+LINUX PROCESS VALIDITY INFO LOCATED AT: https://os.cybbh.io/public/os/latest/010_linux_process_validity/linproc_fg.html
+------------------------------------------------------------------------------------------------------------------------
+GENERAL NOTES
+BRACKETS IN OUTPUT OF ps OR RELATED PROCESS INDICATE KERNEL LEVEL PROCESS, THE ABSCENSE INDICATES A USER LEVEL PROCESS
+ORPHAN PROCESS CREATION DOES NOT CHANGE THE SECURITY CONTEXT OF A RUNNING PROCESS
+HIGHER PRI = HIGHER PRIORITY PROCESS 
+EUID - EFFECTIVE USER ID - asInvoker FROM WINDOWS
+RUID - REAL USER ID - DESTROY PROCESS
+DAEMONS ARE DEEPLY RELEVANT TO PERSISTENCE AS STARTED BY THE CRON DAEMON AT SYSTEM START
+
+& - INDICATES AFTER A COMMAND IN BASH TO RUN IT IN THE BACKGROUND
+fg - RETURN PROCESS TO FOREGROUND
+%# - ALIAS FOR A SPECIFIC JOB, EXAMPLE: kill -9 % 1 KILLS FIRST JOB!
+ps STATIC PROCESS LIST
+top DYNAMIC PROCESS LIST
+htop DYNAMIC AND COLORED PROCESS LIST
+systemctl CONTROL SYSTEMD AND SERVICE MANAGER
+lsof LISTS ALL OPEN FILES BEING USED BY A PROCESS, USE lsof | more FOR MORE INFO IN OUTPUT
+------------------------------------------------------------------------------------------------------------------------
+CTFD CHALLENGES - 12_linux_process_validity
+Linux Processes 1 5
+What is the process ID (PID) of the SysV Init daemon?
+  ANSWER: 1
+Linux Processes 2 10
+How many child processes did SysV Init daemon spawn?
+  ANSWER: 20 VIA top, LOOK AT PR TAB
+Linux Processes 3 10
+Identify all of the arguments given to the ntpd daemon (service) using ps. Format: List all options with parameters (include numbers).
+  ANSWER:
+Linux Processes 4 10
+What is the parent process to Bombadil’s Bash process? (name of the binary, not the absolute path)
+  ANSWER:
+Linux Process Proc Dir 1 10
+Examine the process list to find the ssh process. Then, identify the symbolic link to the absolute path for its executable in the /proc directory. The flag is the absolute path to the symbolic link, and the file it is linked to. Flag format: /absolute/path,/absolute/path
+  ANSWER: /proc/1154/exe,/usr/sbin/sshd VIA 
+------------------------------------------------------------------------------------------------------------------------
+Mausan ukoul for avhe mubullat goth,Sauron,127.0.0.1:1234
