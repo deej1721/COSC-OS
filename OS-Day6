@@ -45,6 +45,10 @@ PROCESS VALIDITY DEMO NOTES:
 CTFD CHALLENGES - 09_windows_process_validity
 Primer_Processes_3 1
 What is the full path to folder used when Windows redirects 32 bit applications running on a 64bit system? Research: https://learn.microsoft.com/en-us/windows/win32/winprog64/file-system-redirector
+  ANSWER:
+Primer_Processes_3 1
+What is the full path to folder used when Windows redirects 32 bit applications running on a 64bit system? Research: https://learn.microsoft.com/en-us/windows/win32/winprog64/file-system-redirector
+
 
 
 Windows_Processes_Basics_1 5
