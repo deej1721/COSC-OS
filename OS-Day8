@@ -1,0 +1,18 @@
+------------------------------------------------------------------------------------------------------------------------
+OS DAY 8 GENERAL LINKS (IF ANY)
+WINDOWS AUDITING AND LOGGING INFO LOCATED AT: https://os.cybbh.io/public/os/latest/011_windows_auditing_&_logging/artifacts_fg.html
+------------------------------------------------------------------------------------------------------------------------
+GENERAL NOTES
+
+RETURN USER ACCOUNSTS:
+  get-localUser | select name, sid RETURNS ALL LOCAL USERS LISTED BY NAME AND SID
+  get-wmiObject win32_userAccount | select name, sid RETURNS BOTH LOCAL AND DOMAIN USERS
+
+PREFETCH FILES ARE CREATED BY THE WINDOWS OPERATING SYSTEM WHEN AN APPLICATION IS RUN FROM A SPECIFIC LOCATION FOR THE FIRST TIME.
+gci -Path 'C:\Windows\Prefetch' -ErrorAction Continue | select * | select -first 5
+
+GET USERNAMES:
+  Get-Childitem 'C:\$RECYCLE.BIN' -Recurse -Verbose -Force | select FullName GET CONTENTS OF RECYCLE BIN WITH SIDS OF THE USERS IN THERE
+  wmic useraccount where 'sid="S-1-5-21-1584283910-3275287195-1754958050-1005"' get name GET THE NAMES ATTACHED TO THOSE SIDS WE FOUND
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
