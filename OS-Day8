@@ -9,10 +9,47 @@ RETURN USER ACCOUNSTS:
   get-wmiObject win32_userAccount | select name, sid RETURNS BOTH LOCAL AND DOMAIN USERS
 
 PREFETCH FILES ARE CREATED BY THE WINDOWS OPERATING SYSTEM WHEN AN APPLICATION IS RUN FROM A SPECIFIC LOCATION FOR THE FIRST TIME.
-gci -Path 'C:\Windows\Prefetch' -ErrorAction Continue | select * | select -first 5
+  gci -Path 'C:\Windows\Prefetch' -ErrorAction Continue | select * | select -first 5
 
 GET USERNAMES:
   Get-Childitem 'C:\$RECYCLE.BIN' -Recurse -Verbose -Force | select FullName GET CONTENTS OF RECYCLE BIN WITH SIDS OF THE USERS IN THERE
   wmic useraccount where 'sid="S-1-5-21-1584283910-3275287195-1754958050-1005"' get name GET THE NAMES ATTACHED TO THOSE SIDS WE FOUND
+
+LIST FILES IN RECENT DOCS
+  gci 'REGISTRY::HKEY_USERS\*\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs'
+
+CONVERT FILE HEX TO UNICODE
+  [System.Text.Encoding]::Unicode.GetString((gp "REGISTRY::HKEY_USERS\*\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\RecentDoc
+
+FIND FQDNS IN SQLITE TEXT FILES
+  $History = (Get-Content 'C:\users\<username>\AppData\Local\Google\Chrome\User Data\Default\History') -replace "[^a-zA-Z0-9\.\:\/]",""
+  $History| Select-String -Pattern "(https|http):\/\/[a-zA-Z_0-9]+\.\w+[\.]?\w+" -AllMatches|foreach {$_.Matches.Groups[0].Value}| ft
 ------------------------------------------------------------------------------------------------------------------------
+
+Primer_Auditing_1
+1
+Logging, Auditing and Monitoring are often confused with each other but are distinctly different. Which term refers to real-time analysis and is often accomplished with a Security Event Information Management system (SIEM)?
+
+Primer_Auditing_2 1
+What term is most appropriate when referring to the process of reviewing log files or other records for specified period?
+  ANSWER: auditing
+Primer_Auditing_3 1
+"Complete the following path to the Windows System Log which records system events e.g. startup and shutdown: %systemroot%\System32_______________
+  ANSWER: 
+Primer_Auditing_4 1
+Which Windows log contains either success or failures and can be configured to record failed logon attempts?
+  ANSWER: security
+Primer_Auditing_5 1
+"Which Windows account is the only account to have WRITE-APPEND access to Windows event logs?" Resource: https://os.cybbh.io/public/os/latest/011_windows_auditing_&_logging/primer.html#_7_describe_the_systems_audit_policy
+  ANSWER: system
+Primer_Auditing_6 1
+What is parsed in an NTFS object's security descriptor, by the Security Reference Monitor (SRM), to determine if an audit entry will be created in the Windows Security Log? Research: https://learn.microsoft.com/en-us/windows/win32/secauthz/access-control-lists
+  ANSWER:
+Primer_Auditing_7 1
+Which registry key holds the audit policy configuration? **Hint - Give full path
+  ANSWER: HKEY_Local_Machine\Security\Policy\PolAdtEv
+
+Windows_Recent_Files_1 5
+What is the registry location of recent docs for the current user?
+  ANSWER:
 ------------------------------------------------------------------------------------------------------------------------
