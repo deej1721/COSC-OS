@@ -69,8 +69,6 @@ GENERAL NOTES
     XPATH:
       xpath -q -e '//element/@attribute' file.xml = XPATH SYNTAX
       REFER TO LINKS ABOVE AND GUIDE FOR FUTURE ASSISTANCE!
-DEMO NOTES
-  
 ------------------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES - 14_linux_auditing_and_logging
 ------------------------------------------------------------------------------------------------------------------------
