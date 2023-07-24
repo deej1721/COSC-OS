@@ -1,0 +1,49 @@
+------------------------------------------------------------------------------------------------------------------------
+OS DAY 9 GENERAL LINKS (IF ANY)
+LINUX AUDITING AND LOGGING INFO LOCATED AT: https://os.cybbh.io/public/os/latest/012_linux_auditing_&_logging/linlog_fg.html
+RFC EDITOR LOCATED AT: https://www.rfc-editor.org/rfc/rfc5424.txt
+------------------------------------------------------------------------------------------------------------------------
+GENERAL NOTES
+  AUTHENTICATION LOGS:
+    /var/log/auth.log - AUTHENTICATION RELATED EVENTS
+    /var/run/utmp - USERS CURRENTLY LOGGED IN
+    /var/log/wtmp - HISTORY FILE FOR UTMP
+    /var/log/btmp - FAILED LOGIN ATTEMPTS
+  APPLICATION LOGS:
+    apache - WEB SERVER (dir)
+    apt - PACKAGE MANAGER (dir)
+    /var/log/mysql.log
+  SYSTEM - (FIRST OF ALL LOGS GENERATED)
+    /var/log/messages - LEGACY CATCH ALL
+    /var/log/syslog - UBUNTU/DEBIAN CATCH ALL
+    dmesg = DEVICE MESSENGER (QUERIES /proc/kmsg)
+    Kernel Ring Buffer - NEVER FILLS
+  LOGGING AT A GLANCE
+    LOCATION : /var/log
+    CONFIG  : /etc/rsyslog.conf
+    SERVICE : /usr/sbin/rsyslogd
+  LOGGING DAEMON
+    /usr/sbin/rsyslogd USER SPACE DAEMON - READS MESSAGES WRITTEN TO /DEV/LOG AND FORMATS AND STORES THEM BASED ON /ETC/RSYSLOG.CONF RULES.
+  syslog() VIA libc  - KERNEL RING BUFFER, AUDIT RECORDS VIA AUDIT SUBSYSTEM (audit)
+  CONFIG FILE
+    /etc/rsyslog.conf LOG ENTRIES FOLLOW SYSLOG FACILITY.SEVERITY STANDARD
+      FACILITY = WHAT PROGRAM, OR PART OF SYSTEM, LOG IS FROM, SEVERITY = URGENCY
+  USEFUL LOGGING COMMANDS
+    tail -f - CONTINUOUSLY SHOW END OF FILE
+    less /var/log/syslog - VIEW LOG IN PAGE VIEWER
+    logger - SEND A USER GENERATED MESSAGE TO SYSTEM LOG I.E. STARTING UPDATE
+    > /var/log/messages - WIPES LOGS
+    last -f /var/log{wtmp,btmp} - NEEDED TO VIEW DATA FILES
+  AUDITING VS LOGGING
+    LOGGING IS SYSTEM/APPLICATION DEFINED, WHILE AUDITING IS USER DEFINED
+    [kauditd] - RUNS AT THE KERNEL LEVEL AND CAN MONITOR INDIVIDUAL SYSCALLS (/sbin/auditd)
+    auditctl - CONTROL/CONFIG CMD
+    aureport - SUMMARY REPORTS OF AUDIT LOGS
+    ausearch - QUERY AUDIT LOGS
+DEMO NOTES
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+CTFD CHALLENGES - 14_linux_auditing_and_logging
+------------------------------------------------------------------------------------------------------------------------
