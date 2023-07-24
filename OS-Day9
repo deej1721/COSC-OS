@@ -46,7 +46,7 @@ GENERAL NOTES
       1     Alert
       2     Critical
       3     Error
-      4     Warning
+      4     Warningpretty print
       5     Notice
       6     Informational
       7     Debug
@@ -71,4 +71,66 @@ GENERAL NOTES
       REFER TO LINKS ABOVE AND GUIDE FOR FUTURE ASSISTANCE!
 ------------------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES - 14_linux_auditing_and_logging
+Linux Auditing and Logging XML 1 5 File: /home/garviel/output.xml Identify the XML element name in the output below <scaninfo type="syn" protocol="tcp" numservices="200" services="1-200"/> Flag: The element, with start and end tags
+  ANSWER: <scaninfo/>
+Linux Auditing and Logging XML 2 5
+Identify one of the XML attributes in the output below: <scaninfo type="syn" protocol="tcp" numservices="200" services="1-200"/> Flag format: value="pair"
+  ANSWER: type="syn"
+Linux Auditing and Logging Standards 1 5
+What RFC is Syslog?
+  ANSWER: 5424
+Linux Auditing and Logging Standards 2 5
+Challenge only allows 3 attempts What is the numerical code assigned to the facility dealing with authorization?
+  ANSWER: 4
+Linux Auditing and Logging Standards 3 5 Challenge only allows 3 attempts How many severity codes are defined in the standard that defines syslog?
+  ANSWER: 8
+Linux Auditing and Logging Standards 4 5
+Challenge only allows 3 attempts What severity is assigned to system instability messages? Hint: Use the numerical code!
+  ANSWER: 0
+Linux Auditing and Logging Syslog 1 5
+Challenge only allows 3 attempts Download the attached rsyslog configuration file for the Syslog # challenges. In the legacy rules section of the file, what facility is logged to 0.log?
+  ANSWER: 0
+Linux Auditing and Logging Syslog 2 5
+Challenge only allows 3 attempts In the legacy rules section of the file, how many severities are logged to 0.log? Flag: Total number of severities
+  ANSWER: 8
+Linux Auditing and Logging Syslog 3 5
+In the legacy rules section of the file, how many severities are logged to 4min.log? List the severities from highest severity (lowest numerical listed) to lowest severity (highest numerical listed) using their severity name. Flag format: name,name,name
+  ANSWER: 
+Linux Auditing and Logging Syslog 6 5
+Challenge only allows 3 attempts
+What facilities and what severities are being sent to a remote server over a reliable connection using port 514? Provide the facility names, number of severities, and the correct destination IP address. Flag format: F,F,#,IP
+  ANSWER: auth,authpriv,8,10.30.0.1
+Linux Auditing and Logging Syslog 8 5
+What messages are being sent to 10.84.0.1? Provide the facility number, the number (amount) of severity codes, and Layer 4 connection type as the answer. Flag format: F,S,Layer 4 connection Type
+  ANSWER: 0,7,udp
+Linux Auditing and Logging XML 3 10
+File: /home/garviel/output.xml Parse all of the IP addresses from the file using XPATH queries
+  ANSWER: 0e850f14fc192c5105955ec094287bd2 VIA xpath -e //address[1]/@addr output.xml | md5sum
+Linux Auditing and Logging XML 4 10
+Select all of the IP addresses and ports using a single XPATH Union Statement Pipe the result to md5sum for the flag
+  ANSWER: ff7990139b6d09aa65afb6e069db0dec VIA xpath -e "//address//@addr | //port//@portid"  output.xml  | md5sum
+Linux Auditing and Logging JSON 1 10
+Use jq to pretty print the JSON file conn.log. Hash the pretty-printed file with md5sum for the flag.
+  ANSWER: 25ebedf7442e470eaaa48b5f7d5b96f4 VIA jq . conn.log | md5sum
+Linux Auditing and Logging Syslog 9 10
+Which cron log severity code is saved only to the local machine? Flag format: # (Continue to reference your 50-cctc.conf file from Syslog1)
+  ANSWER: 7
+Linux Auditing and Logging Syslog 10 10
+The emergency messages (only) on the system are sent to what IP Address? (Continue to reference your 50-cctc.conf file from Syslog1)
+  ANSWER: 10.24.0.1
+Linux Auditing and Logging JSON 2 10
+File : /home/garviel/conn.log This file is a conn.log made in Zeek (Bro) with data about TCP/IP connections. Use jq to locate and count the unique originating endpoint IP addresses in the file. Enter the number of unique originating IP addresses as the flag. Flag format: #
+  ANSWER: 31 VIA jq '.["id.orig_h"]' conn.log | sort -u | wc -l
+Linux Auditing and Logging JSON 3 10
+File: /home/garviel/conn.log This file is a conn.log made in Zeek (Bro) with data about TCP/IP connections. Use jq to locate and count connections where the destination IP sent more than 40 bytes to the source IP. Flag format: #
+  ANSWER:  177 VIA cat conn.log | jq 'select(.resp_bytes > 40)' | jq '.["id.resp_h"]' | wc -l
+Linux Auditing and Logging Whut 1 10
+Use the log file attached to this for all Whut questions. How many unique users logged into this machine?
+  ANSWER: 3 VIA cat log.txt | grep log (OR opened)
+Linux Auditing and Logging Whut 2 10
+What is the total amount of time users were logged into the machine? Flag format: #h,#m (Replace the # with a number)
+  ANSWER: credential from password stores 
+Linux Auditing and Logging Whut 4 15
+Challenge only allows ONE attempt  What user successfully executed commands?
+  ANSWER: Saruman via cat log.txt | grep <USERNAMES>
 ------------------------------------------------------------------------------------------------------------------------
