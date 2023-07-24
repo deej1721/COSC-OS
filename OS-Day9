@@ -4,6 +4,7 @@ LINUX AUDITING AND LOGGING INFO LOCATED AT: https://os.cybbh.io/public/os/latest
 RFC EDITOR LOCATED AT: https://www.rfc-editor.org/rfc/rfc5424.txt
 ------------------------------------------------------------------------------------------------------------------------
 GENERAL NOTES
+  THE MAJORITY OF LOGS WILL BE LOCATED IN /var DIRECTORY
   AUTHENTICATION LOGS:
     /var/log/auth.log - AUTHENTICATION RELATED EVENTS
     /var/run/utmp - USERS CURRENTLY LOGGED IN
@@ -59,9 +60,7 @@ GENERAL NOTES
     aureport - SUMMARY REPORTS OF AUDIT LOGS
     ausearch - QUERY AUDIT LOGS
 DEMO NOTES
-
-
-
+  
 ------------------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES - 14_linux_auditing_and_logging
 ------------------------------------------------------------------------------------------------------------------------
