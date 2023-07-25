@@ -12,7 +12,7 @@ VOLATILITY NOTES
   WILL SPECIFY AN INSTANTIATED PROFILE, USE THIS ONE IN FOLLOW-ON COMMANDS
   .\volatility_2.6_win64_standalone.exe -f ".\cridex.vmem" --profile=WinXPSP2x86 -h DISPLAYS HELP FOR THE SPECIFIED PROFILE
   .\volatility_2.6_win64_standalone.exe -f ".\cridex.vmem" --profile=WinXPSP2x86 pslist DISPLAYS ALL PROCESSES IN VMEM FILE (THOSE RUNNING WHEN THE FILE WAS GENERATED)
-  .\volatility_2.6_win64_standalone.exe -f ".\cridex.vmem" --profile=WinXPSP2x86 psscan SLIGHTLY DIFFERENT OUTPUT TO THE ABOVE, BUT SIMILAR RESULTS (BOTH SHOULD BE RUN)
+  .\volatility_2.6_win64_standalone.exe -f ".\cridex.vmem" --profile=WinXPSP2x86 psscan SLIGHTLY DIFFERENT OUTPUT TO THE ABOVE, BUT SIMILAR RESULTS (BOTH SHOULD BE RAN)
   .\volatility_2.6_win64_standalone.exe -f ".\cridex.vmem" --profile=WinXPSP2x86 pstree SLIGHTLY DIFFERENT OUTPUT TO THE ABOVE, BUT SIMILAR RESULTS (DISPLAYS PARENT-CHILD RELATIONS VISUALLY)
   USE ().count METHOD ON ANY OF THE ABOVE TO RETURN TOTAL NUMBER OF PROCESSES RUNNING AT TIME OF VMEM GENERATION
   .\volatility_2.6_win64_standalone.exe -f ".\cridex.vmem" --profile=WinXPSP2x86 procdump -p 1640 -D . RETURNS INFO FOR ONE PROCESS SPECIFIED BY PID AND DOWNLOADS TO LOCAL CURRENT DIR FOR ANALYSIS
@@ -23,7 +23,8 @@ VOLATILITY NOTES
     ^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}$
     ^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$
   THIS WILL RETURN ALL MATCHING STRING AND A TOTAL COUNT, SO YOU CAN SEE IF THE FILE HAS/HAD ANY NETWORK CONNECTIONS
-  
+  .\volatility_2.6_win64_standalone.exe -f ".\cridex.vmem" --profile=WinXPSP2x86 connections RETURNS ANY NETWORK CONNECTIONS FOUND IN VMEM FILE
+  .\volatility_2.6_win64_standalone.exe -f ".\cridex.vmem" --profile=WinXPSP2x86 conscan SLIGHTLY DIFFERENT OUTPUT TO THE ABOVE, BUT SIMILAR RESULTS (BOTH SHOULD BE RAN)
 ------------------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES - 15_memory_analysis
 ------------------------------------------------------------------------------------------------------------------------
