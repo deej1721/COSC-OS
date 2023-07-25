@@ -25,6 +25,7 @@ VOLATILITY NOTES
   THIS WILL RETURN ALL MATCHING STRING AND A TOTAL COUNT, SO YOU CAN SEE IF THE FILE HAS/HAD ANY NETWORK CONNECTIONS
   .\volatility_2.6_win64_standalone.exe -f ".\cridex.vmem" --profile=WinXPSP2x86 connections RETURNS ANY NETWORK CONNECTIONS FOUND IN VMEM FILE
   .\volatility_2.6_win64_standalone.exe -f ".\cridex.vmem" --profile=WinXPSP2x86 conscan SLIGHTLY DIFFERENT OUTPUT TO THE ABOVE, BUT SIMILAR RESULTS (BOTH SHOULD BE RAN)
+  COMPARE THE ABOVE TWO AGAINST THE PROCESS LISTING COMMANDS TO SEE WHAT PROGRAMS ARE SUS!!!
 ------------------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES - 15_memory_analysis
 ------------------------------------------------------------------------------------------------------------------------
