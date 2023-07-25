@@ -28,4 +28,139 @@ VOLATILITY NOTES
   COMPARE THE ABOVE TWO AGAINST THE PROCESS LISTING COMMANDS TO SEE WHAT PROGRAMS ARE SUS!!!
 ------------------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES - 15_memory_analysis
+Primer_Networking_1 1
+What is used in Windows to implement the networking stack to enable communication with the four lowest OSI layers? Research: https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-2000-server/cc958797(v=technet.10)?redirectedfrom=MSDN
+  ANSWER: NDIS
+Primer_Networking_2 1
+What Windows cmd.exe command will display the local coputer's routing table? Research: https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/netstat
+  ANSWER: netstat
+Primer_Networking_3 1
+IANA assigned TCP/UDP ports in the range of 0-1023 that are usually associated with server-side services are known as? Research: https://networkencyclopedia.com/well-known-port-numbers/
+  ANSWER: well-known port numbers
+Primer_Networking_4 1
+What term describes randomly assigned TCP/UDP ports above 1023 and are used for a short period of time (for the duration of a communication session}? Research: https://en.wikipedia.org/wiki/Ephemeral_port
+  ANSWER: Ephemeral Ports
+Primer_Networking_5 1
+The two words that decribe translating Host names to IP addresses or NetBIOS names to IP addresses is_____? Research: https://learn.microsoft.com/en-us/windows/win32/dns/name-resolution
+  ANSWER: name resolution
+Primer_Networking_6 1
+What is the hierarchical service/protocol that translates hostnames to IP addresses? Research: https://learn.microsoft.com/en-us/windows/win32/dns/dns-overview
+  ANSWER: dns
+Primer_Security_1 1
+What is the term for the numeric value that the Windows OS uses to uniquely ID a user, group or computer?
+  ANSWER: SID
+Primer_Security_2 1
+What switch can be added to the CMD.exe command whoami, to view the SID of the current user? Research: https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/whoami
+  ANSWER: /user
+Primer_Security_3 1
+What is the value of a Relative Identifier (RID) assigned to the 1st user account? Research: https://os.cybbh.io/public/os/latest/013_memory_analysis/primer.html#_4_associate_a_user_sid_with_a_user_profile
+  ANSWER: 1000
+Primer_Security_4 1
+What is the well known RID for the Windows Built-In Administrator Local account? Research: https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-dtyp/81d92bba-d22b-4a8c-908a-554ab29148ab
+  ANSWER: 500
+Primer_Security_5 1
+Complete the GET_CimInstance cmdlet to view all the user SIDs on a Windows host machine by Name and SID respectively: Get-CimInstance Win32_UserAccount | Select-Obect ______________ **hint: the output will ONLY include Name and SID
+  ANSWER: name, sid
+Primer_Security_6 1
+In Windows what else does a user's security Token contain? SIDS of groups of which the user is a member Privilege array The Users _________ ? **hint: Flag describes the unique number assigned to the user Research: https://os.cybbh.io/public/os/latest/013_memory_analysis/primer.html#_1_1_security_identifiers_sids
+  ANSWER: SID
+Primer_Security_7 1
+When contained in a Windows users access token, what privilege does SeBackupPrivilege grant to the user to perform on files and folders? **hint - flag is one word Research: https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/privileges
+  ANSWER: Backup
+Primer_Security_8 1
+Windows performs mandatory integrity checks (MICs) by comparing the integrity level of the resource with the integrity level of the calling process. Windows does this integrity check before the the objects discretionary access check because it is _____________? Research: https://learn.microsoft.com/en-us/windows/win32/secauthz/mandatory-integrity-control Hint: Opposite of slower
+  ANSWER: faster
+Primer_Security_9 1
+A Windows object's Security _________ contains: The SID of the object's owner Discretionary Access Control List (DACL) System Access Control List (SACL) Research: https://learn.microsoft.com/en-us/windows/win32/secauthz/security-descriptors
+  ANSWER: Descriptor
+Primer_Security_10 1
+What contains Access Control Entries (ACEs), that define the types of access a user or group may be granted to an object? Research: https://learn.microsoft.com/en-us/windows/win32/secauthz/access-control-lists
+  ANSWER: DACL
+Primer_Security_11 1
+What cmdlet gets objects that represent the security descriptor of a file or resource? Research: https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/get-acl?view=powershell-7.2
+  ANSWER: get-acl
+Primer_Security_12 1
+What NET cmd.exe command can be used to enumerate the local Windows group accounts? Research: https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc725622(v=ws.11)
+  ANSWER: net localgroup
+Primer_Security_13 1
+Read and answer https://ss64.com/nt/icacls.html What Windows cmd.exe command will display or modify Access Control Lists (ACLs) for files and folders and resolves various issues that occur when using the older CACLS & XCACLS.
+  ANSWER: icacls
+Primer_Security_14 1
+Read and answer: https://learn.microsoft.com/en-us/windows/win32/memory/data-execution-prevention What Windows security feature is a system-level memory protection feature that is built into the operating system starting with Windows XP and Windows Server 2003 and enables the system to mark one or more pages of memory as non-executable?
+  ANSWER: data execution prevention
+Primer_Security_15 1
+What computer security technique is used in Windows to prevent exploitation of memory corruption vulnerabilities? This feature randomly arranges the address space positions of key data areas of a process, in order to prevent an attacker from reliably jumping to, a particular exploited function in memory. Research: https://www.mandiant.com/resources/blog/six-facts-about-address-space-layout-randomization-on-windows
+  ANSWER: address space layout randomization
+Primer_Security_16 1
+What is a small kernel-mode library that can implement API hooking? Research: https://techcommunity.microsoft.com/t5/ask-the-performance-team/demystifying-shims-or-using-the-app-compat-toolkit-to-make-your/ba-p/374947
+  ANSWER: shim
+Primer_Security_17 1
+Read and Answer the next 4 challenges regarding Windows security features introduced in Windows 10 Creator's Update (Windows 10, version 1703) https://learn.microsoft.com/en-us/windows/security/threat-protection/overview-of-threat-mitigations-in-windows-10 Which security feature helps keep attackers from gaining access through Pass-the-Hash or Pass-the-Ticket attacks useing virtualization-based security to isolate secrets, such as NTLM password hashes and Kerberos Ticket Granting Tickets?
+  ANSWER: Credential Guard
+Primer_Security_18 1
+Introduced in Windows 8 this is Microsoft Antivirus, anti-malware solution? Research: https://www.microsoft.com/en-us/windows/comprehensive-security
+  ANSWER: Microsoft Defender Antivirus
+Primer_Security_18 1
+Introduced in Windows 8 this is Microsoft Antivirus, anti-malware solution? Research: https://www.microsoft.com/en-us/windows/comprehensive-security
+  ANSWER: Defender
+Primer_Security_19 1
+What security technique helps prevent overwrites of the Structured Exception Handler? Research: https://support.microsoft.com/en-us/topic/how-to-enable-structured-exception-handling-overwrite-protection-sehop-in-windows-operating-systems-8d4595f7-827f-72ee-8c34-fa8e0fe7b915
+  ANSWER: SEHOP
+Primer_Security_20 1
+What security protection is built into Windows 10, as described in the "Memory reservations" item in Kernel pool protections? This includes protecting address space 0x00000000 (not listed in article). Hint: what is 0? Research: https://learn.microsoft.com/en-us/windows/win32/memory/reserving-and-committing-memory
+  ANSWER: NULL
+Primer_Security_21 1
+Read and answer: https://learn.microsoft.com/en-us/windows/win32/wfp/windows-resource-protection-portal What Windows security feature prevents the replacement of essential system files, folders, and registry keys that are installed as part of the operating system? It became available starting with Windows Server 2008 and Windows Vista.
+  ANSWER: WRP
+Primer_Security_22 1
+Read and answer: https://support.microsoft.com/en-us/topic/use-the-system-file-checker-tool-to-repair-missing-or-corrupted-system-files-79aa86cb-ca52-166a-92a3-966e85d4094e What option should you use with the System File Checker cmd.exe tool sfc.exe to scan all protected system files, and replace corrupted files with a cached copy that is located in a compressed folder at %WinDir%\System32\dllcache ?
+  ANSWER: /scannow
+Primer_Security_23 1
+Where are copies of known-good critical system files located at %WinDir%___________ and used by the Windows Resource Protection feature? hint: complete the path Research: https://en.wikipedia.org/wiki/Windows_Resource_Protection https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/clean-up-the-winsxs-folder?view=windows-11
+  ANSWER: \WinSxS\Backup
+Primer_Networking_7 1
+What CLI tool is often used to troubleshoot DNS issues but can also be used in reconnaissance? Research: https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup
+  ANSWER: nslookup
+Primer_Networking_8 1
+In Windows 10 what is the full path to the hosts file? Complete the path c:\Windows____________ Research: https://www.tenable.com/plugins/nessus/23910
+  ANSWER: c:\Windows\System32\Drivers\etc\hosts
+Primer_Networking_9 1
+Fill in the missing component for the usual Host Name Resolution order: Client checks own host name Client searches local Hosts file NetBIOS name resolution sequence is used as a backup Flag Format: Full name or acronym Research: https://learn.microsoft.com/en-us/windows/win32/dns/dns-overview https://support.microsoft.com/en-us/topic/microsoft-tcp-ip-host-name-resolution-order-dae00cc9-7e9c-c0cc-8360-477b99cb978a
+  ANSWER: dns
+Primer_Networking_10 1
+What cmd.exe tool will display NetBIOS transport statistics in Windows? Research: https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/nbtstat
+  ANSWER: nbtstat
+Primer_Surveys_1 1
+What team survey is focused on security and auditing? ______ Team Research: https://www.coursera.org/articles/red-team-vs-blue-team
+  ANSWER: red
+Primer_Surveys_2 1
+What type of survey is focused on computer system settings, updates, configurations and installed software? ________ Team Research: https://ine.com/blog/understanding-blue-team-roles
+  ANSWER: blue
+Primer_Surveys_3 1
+What type of survey is focused on malware detection, artifact detection and investigating processes? Research: https://learn.microsoft.com/en-us/security/compass/incident-response-overview
+  ANSWER: incident response\WinSxS\Backup
+Windows_Memory_Analysis_Plugin_1 5
+What Volatility plugin will dump a process to an executable file sample?
+  ANSWER: procdump
+Windows_Memory_Analysis_Plugin_2 5
+What Volatility plugin will extract command history by scanning for _COMMAND_HISTORY?
+  ANSWER: 
+Windows_Memory_Analysis_Plugin_3 5
+What Volatility plugin will show driver objects?
+  ANSWER: driverscan
+Windows_Memory_Analysis_Basics_2 5
+What command do you run to find which memory profile to use with a memory image?
+  ANSWER: imageinfo
+Windows_Memory_Analysis_Basics_1 5
+What switch/argument will list all plugins for Volatility?
+  ANSWER: -h
+Windows_Volatility_Data 5
+In terms of Volatile Data, what locations are the MOST volatile? Flag format: location,location
+  ANSWER: CPU registers, cache
+Windows_Memory_Analysis_Basics_3 10
+What is the 12th plugin listed in the Volatility help menu?
+  ANSWER: 
+Windows_Memory_Analysis_Basics_4 10
+What profile do you use in conjunction with this memory image? Use the following file (memory image) to answer the rest of the Memory Analysis challenges. 0zapftis.vmem
+  ANSWER: 
 ------------------------------------------------------------------------------------------------------------------------
