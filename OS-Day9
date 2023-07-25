@@ -133,4 +133,6 @@ What is the total amount of time users were logged into the machine? Flag format
 Linux Auditing and Logging Whut 4 15
 Challenge only allows ONE attempt  What user successfully executed commands?
   ANSWER: Saruman via cat log.txt | grep <USERNAMES>
+
+XPATH RELATIVE STATEMENT SYNTAX -xpath -q -e '//state[@state="open"]/../@portid|//state[@state="open"]/../../../address/@addr' output.xml | md5sum
 ------------------------------------------------------------------------------------------------------------------------
