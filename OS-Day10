@@ -11,7 +11,7 @@ VOLATILITY NOTES
   .\volatility_2.6_win64_standalone.exe -f ".\cridex.vmem" imageinfo RETURNS IMAGE INFO USING VOLATILITY TOOL AGAINST THE SPECIFIED VMEM FILE, RECOMMENDED FIRST STEP!
   WILL SPECIFY AN INSTANTIATED PROFILE, USE THIS ONE IN FOLLOW-ON COMMANDS
   .\volatility_2.6_win64_standalone.exe -f ".\cridex.vmem" --profile=WinXPSP2x86 -h DISPLAYS HELP FOR THE SPECIFIED PROFILE
-  .\volatility_2.6_win64_standalone.exe -f ".\cridex.vmem" --profile=WinXPSP2x86 pslist DISPLAYS ALL PROCESSES IN VMEM FILE (THOSE RUNNING WHEN THE FILE WAS GENERATED)
+  .\volatility_2.6_win64_standalone.exe -f ".\cridex.vmem" --profile=WinXPSP2x86 pslist DISPLAYS ALL PRpsOCESSES IN VMEM FILE (THOSE RUNNING WHEN THE FILE WAS GENERATED)
   .\volatility_2.6_win64_standalone.exe -f ".\cridex.vmem" --profile=WinXPSP2x86 psscan SLIGHTLY DIFFERENT OUTPUT TO THE ABOVE, BUT SIMILAR RESULTS (BOTH SHOULD BE RAN)
   .\volatility_2.6_win64_standalone.exe -f ".\cridex.vmem" --profile=WinXPSP2x86 pstree SLIGHTLY DIFFERENT OUTPUT TO THE ABOVE, BUT SIMILAR RESULTS (DISPLAYS PARENT-CHILD RELATIONS VISUALLY)
   USE ().count METHOD ON ANY OF THE ABOVE TO RETURN TOTAL NUMBER OF PROCESSES RUNNING AT TIME OF VMEM GENERATION
@@ -33,7 +33,7 @@ What is used in Windows to implement the networking stack to enable communicatio
   ANSWER: NDIS
 Primer_Networking_2 1
 What Windows cmd.exe command will display the local coputer's routing table? Research: https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/netstat
-  ANSWER: netstat
+  ANSWER: route print
 Primer_Networking_3 1
 IANA assigned TCP/UDP ports in the range of 0-1023 that are usually associated with server-side services are known as? Research: https://networkencyclopedia.com/well-known-port-numbers/
   ANSWER: well-known port numbers
@@ -41,7 +41,7 @@ Primer_Networking_4 1
 What term describes randomly assigned TCP/UDP ports above 1023 and are used for a short period of time (for the duration of a communication session}? Research: https://en.wikipedia.org/wiki/Ephemeral_port
   ANSWER: Ephemeral Ports
 Primer_Networking_5 1
-The two words that decribe translating Host names to IP addresses or NetBIOS names to IP addresses is_____? Research: https://learn.microsoft.com/en-us/windows/win32/dns/name-resolution
+The two words that decribe translating Host names to IP add  ANSWER:resses or NetBIOS names to IP addresses is_____? Research: https://learn.microsoft.com/en-us/windows/win32/dns/name-resolution
   ANSWER: name resolution
 Primer_Networking_6 1
 What is the hierarchical service/protocol that translates hostnames to IP addresses? Research: https://learn.microsoft.com/en-us/windows/win32/dns/dns-overview
@@ -144,13 +144,13 @@ What Volatility plugin will dump a process to an executable file sample?
   ANSWER: procdump
 Windows_Memory_Analysis_Plugin_2 5
 What Volatility plugin will extract command history by scanning for _COMMAND_HISTORY?
-  ANSWER: 
+  ANSWER: cmdscan
 Windows_Memory_Analysis_Plugin_3 5
 What Volatility plugin will show driver objects?
   ANSWER: driverscan
 Windows_Memory_Analysis_Basics_2 5
 What command do you run to find which memory profile to use with a memory image?
-  ANSWER: imageinfo
+  ANSWER: imageinfoiproute
 Windows_Memory_Analysis_Basics_1 5
 What switch/argument will list all plugins for Volatility?
   ANSWER: -h
@@ -159,8 +159,20 @@ In terms of Volatile Data, what locations are the MOST volatile? Flag format: lo
   ANSWER: CPU registers, cache
 Windows_Memory_Analysis_Basics_3 10
 What is the 12th plugin listed in the Volatility help menu?
-  ANSWER: 
+  ANSWER: cmdscan
 Windows_Memory_Analysis_Basics_4 10
 What profile do you use in conjunction with this memory image? Use the following file (memory image) to answer the rest of the Memory Analysis challenges. 0zapftis.vmem
-  ANSWER: 
+  ANSWER: WinXPSP2x86
+Windows_Malware_1 10
+What command did the attacker type to check the status of the malware?
+  ANSWER: sc query malware
+Windows_Malware_2 10
+What are the last 7 digits of the memory offset for the driver used by the malware?
+  ANSWER: 1a498b8 VIA  .\volatility_2.6_win64_standalone.exe -f ".\0zapftis.vmem" --profile=WinXPSP2x86 driverscan
+Windows_Malware_3 10
+The process running under PID 544 seems malicious. What is the md5hash of the executable? 
+  ANSWER: 6CEE14703054E226E87A963372F767AA VIA Set-MpPreference -ExclusionPath 'C:\Users\andy.dwyer\Desktop\Memory_Analysis\', Get-FileHash -Algorithm MD5 .\executable.544.exe
+Windows_Malware_4 10
+What remote IP and port did the system connect to? Flag format: ip:port
+  ANSWER: 172.16.98.1:6666
 ------------------------------------------------------------------------------------------------------------------------
