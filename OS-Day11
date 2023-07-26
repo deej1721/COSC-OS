@@ -18,6 +18,38 @@ GENERAL NOTES
   POWERSHELL AD CMDLETS
     Get-ADUser
     New-ADUser -Name "Bad Guy" -PasswordNotRequired 1 -Path "OU=3RD LPT,OU=CCO,OU=3RDBN,OU=WARRIORS,DC=ARMY,DC=WARRIORS"
+  POWERSHELL USER ENUMERATION
+    NOTE: MANY CMDLETS WILL HAVE NO RETURN, THIS GENERALLY INDICATES SUCCESSFUL COMPLETION OF CMDLET
+    Get-Command -Module activedirectory LISTS AVAILABLE AD CMDLETS
+    Get-ADDefaultDomainPasswordPolicy RETURNS SET PASSWORD POLICIES
+    Get-ADFineGrainedPasswordPolicy -Filter {name -like "*"} RETURNS ANY FINEGRAIN PWD POLICIES, NO RETURN = NOT SET
+    Get-ADForest GET FOREST DETAILS
+    Get-ADDomain GET DOMAIN DETAILS
+    Get-ADGroup -Filter * GET ALL AD GROUPS
+    Get-ADGroup -Identity 'IA Analysts Team' GET SPECIFIC GROUP INFO 
+    Get-ADGroupMember -Identity 'IA Analysts Team' -Recursive GET LIST OF GROUP MEMBERS
+    Get-ADUser -Filter 'Name -like "*"' GET ALL AD USERS
+    Get-ADUser -Identity 'Nina.Webster' -Properties Description VIEW ADDITIONAL AD PROPERTIES
+    get-aduser -filter {Enabled -eq "FALSE"} -properties name, enabled FIND DISABLED USERS
+    Enable-ADAccount -Identity guest RE-ENABLE USERS, NO RETURN INDICATES SUCCESSFUL EXECUTION
+    Set-AdAccountPassword -Identity guest -NewPassword (ConvertTo-SecureString -AsPlaintext -String "PassWord12345!!" -Force) CHANGE PASSWORD, NO RETURN INDICATES SUCCESSFUL EXECUTION
+    Add-ADGroupMember -Identity "Domain Admins" -Members guest ADD USER TO THE ADMIN GROUP, NO RETURN INDICATES SUCCESSFUL EXECUTION
+    Get-ADuser -filter * | select distinguishedname, name GET DISTINGUISHED NAMES TO MATCH AD FORMAT
+    New-ADUser -Name "Bad.Guy" -AccountPassword (ConvertTo-SecureString -AsPlaintext -String "PassWord12345!!" -Force) -path "OU=3RD PLT,OU=CCO,OU=3RDBN,OU=WARRIORS,DC=army,DC=warriors" CREATE NEW USER
+    Enable-ADAccount -Identity "Bad.Guy"
+    Remove-ADUser -Identity "Bad.Guy" REMOVE USER
+    Remove-ADGroupMember -Identity "Domain Admins" -Members guest REMOVE USER FROM SPECIFIED GROUPS
+    Disable-AdAccount -Identity Guest DISABLE GUEST ACCOUNT
+    (Get-AdGroupMember -Identity 'domain admins').Name GET NAME PROPERTY FROM THE SPECIFIED AD GROUP
+  DISPLAY ALL DOMAIN ADMIN ACCOUNTS, THIRD CMDLET FOR ENTERPRISE ADMINS (NOTICE ONLY THE identity STRING CHANGED
+    Get-AdGroupMember -identity "Domain Admins" -Recursive | %{Get-ADUser -identity $_.DistinguishedName}
+    Get-AdGroupMember -identity "Domain Admins" -Recursive | %{Get-ADUser -identity $_.DistinguishedName} | select name, Enabled
+    Get-AdGroupMember -identity "Enterprise Admins" -Recursive | %{Get-ADUser -identity $_.DistinguishedName} | select name, Enabled
+  RSOP NOTES
+    gpresult /? DISPLAY HELP
+    gpresult /user Webster /v OUTPUT THE COMPUTER AND USER NODE SETTINGS OF THE SPECIFIC USER
+    gpresult /r DISPLAY DATA ABOUT THE MACHINE AND LOGGED ON USER
+    gpupdate /force FORCE ANY/ALL GROUP POLICY SETTING CHANGES TO OCCUR INSTANTLY RATHER THAN UPON RESTART
 ------------------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES - 16_windows_active_directory_enumeration
 ------------------------------------------------------------------------------------------------------------------------
