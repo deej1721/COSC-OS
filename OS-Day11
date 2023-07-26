@@ -1,0 +1,23 @@
+------------------------------------------------------------------------------------------------------------------------
+//COSC OS DAY 11 GENERAL LINKS:
+  ACTIVE DIRECTORY ENUMERATION INFO LOCATED AT: https://os.cybbh.io/public/os/latest/014_windows_active_directory_enumeration/active_fg.html
+    SLIDES LOCATED AT: https://os.cybbh.io/-/public/-/jobs/842248/artifacts/os/modules/014_windows_active_directory_enumeration/pages/12_BloodHound_Slides.html
+  POWERVIEW DOWNLOAD LOCATED AT: https://github.com/PowerShellMafia/PowerSploit
+  BLOODHOUND DOWNLOAD LOCATED AT: https://bloodhoundenterprise.io/bloodhound-open-source/
+------------------------------------------------------------------------------------------------------------------------
+GENERAL NOTES
+  GROUP POLICY OBJECT QUERIES
+    gpresult
+    Get-GPResultantSetOfPolicy
+  DSTOOLS
+    DSADD
+    DSGET
+    DSMOD
+    DSMOVE
+    DSQUERY
+  POWERSHELL AD CMDLETS
+    Get-ADUser
+    New-ADUser -Name "Bad Guy" -PasswordNotRequired 1 -Path "OU=3RD LPT,OU=CCO,OU=3RDBN,OU=WARRIORS,DC=ARMY,DC=WARRIORS"
+------------------------------------------------------------------------------------------------------------------------
+CTFD CHALLENGES - 16_windows_active_directory_enumeration
+------------------------------------------------------------------------------------------------------------------------
