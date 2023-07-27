@@ -9,6 +9,7 @@ NOTE: IF CMD DOESN'T WORK, TRY SUDO-ING
   ps -elf CORRELATE PORTS TO OPEN PROCESSES
   WATCH FOR ABNORMAL PIDS, INTENTIONAL OBFUSCATION,(MISPELLING) RUNNING FROM UNUSUAL LOCATION
   cronjobs, runlevels, SEARCH /etc/profile FOR PROFILES | ALL PERSISTENCE LOCATIONS
+  ps -aux PROVED USEFUL
 ------------------------------------------------------------------------------------------------------------------------
 WINDOWS NOTES:
   IMPORT $wc = new-object System.Net.WebClient TO START OUT WITH
