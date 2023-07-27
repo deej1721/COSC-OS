@@ -52,4 +52,82 @@ GENERAL NOTES
     gpupdate /force FORCE ANY/ALL GROUP POLICY SETTING CHANGES TO OCCUR INSTANTLY RATHER THAN UPON RESTART
 ------------------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES - 16_windows_active_directory_enumeration
+Primer_Active_Directory_1 1
+What is the database that is used to connect users with network resources?
+  ANSWER: active directory
+Primer_Active_Directory_2 1
+What are all things that are in active directory stored as?
+  ANSWER: objects
+Primer_Active_Directory_3 1
+What is the Active Directory component which contains formal definitions of every object class that can be created in an Active Directory forest? Resources https://os.cybbh.io/public/os/latest/014_windows_active_directory_enumeration/primer.html#_3_domains
+  ANSWER: schema
+Primer_Active_Directory_4 1
+What protocol is used when accessing and updating the Active Directory? Resources https://www.sciencedirect.com/topics/computer-science/directory-access-protocol
+  ANSWER: ldap
+Primer_Active_Directory_5 1
+From an Offensive perspective, what type of account is usually the main target? Resources https://os.cybbh.io/public/os/latest/014_windows_active_directory_enumeration/primer.html#_7_administrator_best_practices
+  ANSWER: administrator
+Primer_Active_Directory_6 1
+Task : If an account has been inactive for a substantial amount of time what should the adminstrators do to the account? Resources https://os.cybbh.io/public/os/latest/014_windows_active_directory_enumeration/primer.html#_11_impact_of_group_policy_settings
+  ANSWER: disable
+Primer_Active_Directory_7 1
+What is the basic PowerShell cmdlet used to enumerate users? Resources https://os.cybbh.io/public/os/latest/014_windows_active_directory_enumeration/primer.html#_2_2_powershell
+  ANSWER: Get-ADUser
+Primer_Active_Directory_8 1
+What is the suite of tools used in CLI to enumerate users across the network? Resources https://os.cybbh.io/public/os/latest/014_windows_active_directory_enumeration/primer.html#_2_1_domain_service_ds_tools
+  ANSWER: ds
+Windows_Active_Directory_Basics_8 5
+What is the domain portion of the following SID: S-1-5-21-1004336348-1177238915-682003330-1000
+  ANSWER: 21-1004336348-1177238915-682003330
+Windows_Active_Directory_Basics_1 5
+What PowerShell command will list domain groups?
+  ANSWER: get-adGroup
+Windows_Active_Directory_Basics_2 5
+What PowerShell command will list all users and their default properties? The flag is the full command with arguments.
+  ANSWER: Get-ADUser -Filter 'Name -like "*"' 
+Windows_Active_Directory_Basics_5 5
+What PowerShell command will allow you to search Active Directory accounts for expired accounts without having to create a filter? The flag is only the command, no arguments/switches.
+  ANSWER: Search-ADAccount
+Windows_AD_Search_Accounts 10
+Find the expired accounts that aren't disabled. List the last names in Alphabetical Order, separated with a comma, and no space between. Flag format: name,name
+  ANSWER: Krause,Page VIA Search-ADAccount -AccountExpired | select Name, samAccountName, ObjectClass, AccountExpirationDate, lastLogonDate
+Windows_Active_Directory_Basics_7 10
+What is the RID of the krbtgt account. Example: S-1-5-21-1004336348-1177238915-682003330-[501]
+  ANSWER: 502 VIA Get-ADUser -Identity 'krbtgt'
+Windows_Active_Directory_Basics_3 10
+How many users are members of the Domain Admins group? HINT: No sub-groups.
+  ANSWER: 1 
+Windows_Active_Directory_Basics_4 10
+How many total users are members of the Domain Admins group?
+  ANSWER: 14 VIA Get-AdGroupMember -identity "Domain Admins" -Recursive
+Windows_Active_Directory_Basics_6 10
+Find the short name of the domain in which this server is a part of.
+  ANSWER: army VIA Get-ADDomain
+Windows_AD_Search_Naming 10
+Find the accounts that contain unprofessional information in the description. List the last names in Alphabetical Order, separated by a comma, with no space. Flag format: name,name
+  ANSWER: Ibarra,Lee VIA Get-ADUser -Filter * -Properties EmailAddress,DisplayName, samaccountname, Description| select EmailAddress, DisplayName, Description
+Windows_AD_Search_Insider_1 10
+The flag is the name of the file where someone is requesting modified access rights.
+  ANSWER: 14287.pdf VIA gci -recurse
+Windows_AD_Search_Files 10
+The flag is the unprofessionally-named file located somewhere on the Warrior Share.
+  ANSWER: lulz.pdf VIA gci -recurse
+Windows_AD_Search_PII 10
+The flag is the name of the file containing PII on the Warrior Share.
+  ANSWER: phone_matrix.xlsx VIA gci-recurse
+Windows_AD_Search_Emails 10
+Find the unprofessional email addresses. List the email's domain.
+  ANSWER: CharlieB@ashleymadison.com , FINAL ANSWER ashleymadison.com VIA Get-ADUser -Filter * -Properties EmailAddress,DisplayName, samaccountname| select EmailAddress, DisplayName
+Windows_AD_Search_Passwords 10
+Find the following three accounts: two accounts with passwords that never expire one account that has its password stored using reversible encryption List the last names in Alphabetical Order, comma-separated, no spaces. Do not list built-in accounts. Flag format: name,name,name
+  ANSWER: Brandywine,Ibarra,Sanchez VIA Get-ADUser -filter * -Properties PasswordNeverExpires | select name,PasswordNeverExpires | Where-Object {$_.PasswordNeverExpires -like "True"} AND THEN Get-ADUser -filter {AllowReversiblePasswordEncryption -eq $True} -Properties "AllowReversiblePasswordEncryption"
+Windows_AD_Search_Insider_2 10
+The flag is the name of the user who is requesting modified access rights. Connect to the Warrior Share: net use * "\\file-server\warrior share"
+  ANSWER: 
+
+
+
+
+
+
 ------------------------------------------------------------------------------------------------------------------------
