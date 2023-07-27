@@ -1,0 +1,30 @@
+------------------------------------------------------------------------------------------------------------------------
+!!! OS DAY 12 - TEST NOTES !!!
+3 ATTEMPTS PER QUESTION, 10 QUESTIONS, 7 NEEDED TO PASS
+------------------------------------------------------------------------------------------------------------------------
+LINUX NOTES:
+NOTE: IF CMD DOESN'T WORK, TRY SUDO-ING
+  netstat -an TO VIEW PORTS AND NETWORK CONNECTIONS
+  4444, PATTERNS, RHP<->  ARE ALL SUS PORTS
+  ps -elf CORRELATE PORTS TO OPEN PROCESSES
+  WATCH FOR ABNORMAL PIDS, INTENTIONAL OBFUSCATION,(MISPELLING) RUNNING FROM UNUSUAL LOCATION
+  cronjobs, runlevels, SEARCH /etc/profile FOR PROFILES | ALL PERSISTENCE LOCATIONS
+------------------------------------------------------------------------------------------------------------------------
+WINDOWS NOTES:
+  IMPORT $wc = new-object System.Net.WebClient TO START OUT WITH
+  NOTE: IF CMD DOESN'T WORK, MAKE SURE RUNNING AS ADMIN
+  netstat, autoruns, tcpview, procexp ALL WAYS TO VIEW NETWORK CONNECTIONS IN WINDOWS
+  get-process, procmon, tasklist TO VIEW PROCESSES
+  WATCH FOR INTENTIONAL OBFUSCATION (MISPELLING), RUNNING FROM UNUSUAL LOCATION
+  powershell profiles, registry, services ALL PERSISTENCE LOCATIONS
+STUDENT GUIDE 5.4 - https://os.cybbh.io/public/os/latest/004_windows_registry/reg_fg.html#_5_registry_locations_of_interest
+REGISTRY LOCATIONS OF INTEREST:
+  HKLM\Software\Microsoft\Windows\CurrentVersion\Run
+  HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce
+  HKU\<SID>\Software\Microsoft\Windows\CurrentVersion\Run
+  HKU\<SID>\Software\Microsoft\Windows\CurrentVersion\RunOnce
+  HKLM\SYSTEM\CurrentControlSet\services
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders
+  HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon
+AUDITING AND LOGGING INFO LOCATED AT: https://os.cybbh.io/public/os/latest/011_windows_auditing_&_logging/artifacts_fg.html#_1_windows_artifacts
