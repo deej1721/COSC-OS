@@ -10,6 +10,7 @@ NOTE: IF CMD DOESN'T WORK, TRY SUDO-ING
   WATCH FOR ABNORMAL PIDS, INTENTIONAL OBFUSCATION,(MISPELLING) RUNNING FROM UNUSUAL LOCATION
   cronjobs, runlevels, SEARCH /etc/profile FOR PROFILES | ALL PERSISTENCE LOCATIONS
   ps -aux PROVED USEFUL
+LINUX AUDITING AND LOGGING INFO LOCATED AT: https://os.cybbh.io/public/os/latest/012_linux_auditing_&_logging/linlog_fg.html
 ------------------------------------------------------------------------------------------------------------------------
 WINDOWS NOTES:
   IMPORT $wc = new-object System.Net.WebClient TO START OUT WITH
